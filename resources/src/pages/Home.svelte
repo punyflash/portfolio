@@ -43,7 +43,7 @@
             </p>
             <div class="flex gap-2">
                 {#each socials as { icon, url }}
-                    <a href={url} target="_blank" class="btn btn-circle">
+                    <a href={url} target="_blank" class="btn btn-circle btn-primary">
                         {#await icon then Icon}
                             <Icon.default class="w-4 h-4" />
                         {/await}

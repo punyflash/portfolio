@@ -2,6 +2,9 @@ import "./app.css";
 import { createInertiaApp, type ResolvedComponent } from '@inertiajs/svelte'
 import { mount, hydrate } from 'svelte'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import themeChange from "./utils/theme";
+
+themeChange()
 
 createInertiaApp({
     resolve: name => resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob<ResolvedComponent>('./pages/**/*.svelte')),

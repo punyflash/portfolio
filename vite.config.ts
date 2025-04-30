@@ -5,6 +5,7 @@ import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import icons from 'unplugin-icons/vite'
 import svg from 'vite-plugin-svelte-svg';
 import { builtinModules } from 'node:module';
+import path from 'node:path';
 
 export default defineConfig({
     plugins: [
@@ -37,5 +38,10 @@ export default defineConfig({
                 }
             }
         }
-    }
+    },
+    resolve: {
+        alias: [
+            { find: "@", replacement: path.resolve(__dirname, 'resources/src') },
+        ]
+    },
 });

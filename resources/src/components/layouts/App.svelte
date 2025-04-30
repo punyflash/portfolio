@@ -1,4 +1,6 @@
 <script lang="ts">
+    import ThemeChange from "../ThemeChange.svelte";
+
     const { children } = $props()
 </script>
 
@@ -14,6 +16,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
+        <ThemeChange class="capitalize select select-sm bg-base-100 text-current rounded-full w-32" />
     </header>
 
     {@render children()}
