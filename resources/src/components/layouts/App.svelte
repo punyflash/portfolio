@@ -19,7 +19,7 @@
                 <li><a href={contact.url()} use:inertia>Contact</a></li>
             </ul>
         </div>
-        <ThemeChange class="capitalize select select-sm bg-base-100 text-current rounded-full w-32" />
+        <ThemeChange class="capitalize select select-sm w-32" />
     </header>
 
     {@render children()}
