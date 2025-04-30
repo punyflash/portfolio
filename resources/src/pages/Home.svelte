@@ -12,9 +12,10 @@
         { alt: "JavaScript", src: import("../assets/img/javascript.svg") },
         { alt: "TypeScript", src: import("../assets/img/typescript.svg") },
         { alt: "Laravel", src: import("../assets/img/laravel.svg") },
-        { alt: "Tailwind", src: import("../assets/img/tailwind.svg") },
         { alt: "Svelte", src: import("../assets/img/svelte.svg") },
         { alt: "Vue", src: import("../assets/img/vue.svg") },
+        { alt: "Livewire", src: import("../assets/img/livewire.svg") },
+        { alt: "Tailwind", src: import("../assets/img/tailwind.svg") },
     ])
 
     const socials = $state([
@@ -28,8 +29,8 @@
 
     onMount(() => {
         const timeout = setInterval(() => {
-            carousel.scrollTo({ left: carousel.scrollLeft + 256, behavior: "smooth" })
-            setTimeout(() => items.push(items.shift()), 500)
+            carousel.children[1].scrollIntoView({ behavior: "smooth" })
+            setTimeout(() => items.push(items.shift()), 250)
         }, 2000)
 
         return () => clearInterval(timeout)
@@ -57,7 +58,7 @@
                 {/each}
             </div>
         </div>
-        <div class="carousel rounded-box w-64 h-64 gap-6" bind:this={carousel} onwheel={(e) => e.preventDefault()}>
+        <div class="carousel rounded-box w-64 h-64 gap-6" bind:this={carousel}>
             {#each items as { src, alt } (alt)}
                 <div class="carousel-item w-full">
                     {#await src then src}
