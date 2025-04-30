@@ -23,7 +23,7 @@
 
     <footer class="footer p-6 bg-base-300 text-base-content">
         <div class="items-center grid-flow-col">
-            <p>© {new Date().getFullYear()} Dmtro Morozov. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Dmytro Morozov. All rights reserved.</p>
         </div>
     </footer>
 </main>
