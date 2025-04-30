@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            .bg { fill: #1d232a; }
+            .shape { stroke: #ecf9ff; }
+        }
+        @media (prefers-color-scheme: light) {
+            .bg { fill: #fff; }
+            .shape { stroke: #18181b; }
+        }
+    </style>
+    <rect class="bg" width="64" height="64" rx="12"/>
+    <circle cx="32" cy="32" r="12" fill="none" class="shape" stroke-width="4"/>
+    <line x1="20" y1="44" x2="44" y2="20" class="shape" stroke-width="4" stroke-linecap="round"/>
+</svg>

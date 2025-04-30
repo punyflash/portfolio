@@ -18,10 +18,12 @@
     ])
 
     const socials = $state([
-        { icon: import("virtual:icons/cib/github"), url: "https://github.com/punyflash" },
-        { icon: import("virtual:icons/cib/linkedin"), url: "https://linkedin.com/in/punyflash" },
-        { icon: import("virtual:icons/cib/stackoverflow"), url: "https://stackoverflow.com/users/10249529" },
-        { icon: import("virtual:icons/cib/mail-ru"), url: "mailto:puny.flash@gmail.com" },
+        { icon: import("~icons/cib/github"), url: "https://github.com/punyflash" },
+        { icon: import("~icons/cib/linkedin"), url: "https://linkedin.com/in/punyflash" },
+        { icon: import("~icons/cib/stackoverflow"), url: "https://stackoverflow.com/users/10249529" },
+        { icon: import("~icons/cib/telegram"), url: "https://t.me/punyflash" },
+        { icon: import("~icons/cib/mail-ru"), url: "mailto:puny.flash@gmail.com" },
+        { icon: import("~icons/cil/phone"), url: "tel:+380681076687" },
     ])
 
     onMount(() => {
@@ -34,6 +36,10 @@
     })
 </script>
 
+<svelte:head>
+    <title>Dmytro Morozov | Full Stack Web Developer</title>
+</svelte:head>
+
 <section class="hero bg-base-100 flex-1">
     <div class="hero-content text-left gap-20">
         <div>
@@ -45,7 +51,7 @@
                 {#each socials as { icon, url }}
                     <a href={url} target="_blank" class="btn btn-circle btn-primary">
                         {#await icon then Icon}
-                            <Icon.default class="w-4 h-4" />
+                            <Icon.default class="w-6 h-6" />
                         {/await}
                     </a>
                 {/each}
