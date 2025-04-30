@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { run } from "vite-plugin-run";
 import icons from 'unplugin-icons/vite'
 import svg from 'vite-plugin-svelte-svg';
 import { builtinModules } from 'node:module';
@@ -14,6 +15,11 @@ export default defineConfig({
             ssr: ['resources/src/ssr.ts'],
             refresh: true,
         }),
+        run([{
+            name: 'wayfinder',
+            run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder'],
+            pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
+        }]),
         svelte({
             preprocess: [vitePreprocess({ script: true })],
         }),
@@ -42,6 +48,7 @@ export default defineConfig({
     resolve: {
         alias: [
             { find: "@", replacement: path.resolve(__dirname, 'resources/src') },
+            { find: "#", replacement: path.resolve(__dirname, 'resources/src/.wayfinder') },
         ]
     },
 });

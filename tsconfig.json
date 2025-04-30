@@ -15,7 +15,8 @@
         "lib": ["ESNext", "DOM", "WebWorker"],
         "types": ["vite/client", "unplugin-icons/types/svelte"],
         "paths": {
-            "@/*": ["./resources/src/*"]
+            "@/*": ["./resources/src/*"],
+            "#/*": ["./resources/src/.wayfinder/*"]
         }
     },
     "include": [

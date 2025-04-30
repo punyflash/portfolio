@@ -7,7 +7,7 @@
         validFromFieldName: string
     }
 
-    export function withHoneypot(honeypot: Honeypot, data: object = {}) {
+    export function withHoneypot(honeypot: Honeypot, data: Record<string, any>) {
         if (!honeypot?.enabled) return data
 
         return {

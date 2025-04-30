@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Notifications\ContactFormNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\AnonymousNotifiable;
+use Inertia\Inertia;
 
 class ContactController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index()
+    {
+        return Inertia::render('Contact');
+    }
+
+    public function store(Request $request)
     {
         $data = $request->validate([
             'name' => ['required'],
@@ -17,7 +23,7 @@ class ContactController extends Controller
             'message' => ['required'],
         ]);
 
-        defer(static fn () => new AnonymousNotifiable()
+        defer(static fn () => (new AnonymousNotifiable)
             ->route('mail', 'puny.flash@gmail.com')
             ->notify(new ContactFormNotification($data))
         );
