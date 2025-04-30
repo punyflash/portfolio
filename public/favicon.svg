@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
     <style>
         @media (prefers-color-scheme: dark) {
-            .bg { fill: #1d232a; }
-            .shape { stroke: #ecf9ff; }
+            .bg { fill: #ecf9ff; }
+            .shape { stroke: #1d232a; }
         }
         @media (prefers-color-scheme: light) {
-            .bg { fill: #fff; }
-            .shape { stroke: #18181b; }
+            .bg { fill: #18181b; }
+            .shape { stroke: #fff; }
         }
     </style>
     <rect class="bg" width="64" height="64" rx="12"/>
