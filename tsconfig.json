@@ -13,12 +13,13 @@
         "isolatedModules": true,
         "noEmit": true,
         "lib": ["ESNext", "DOM", "WebWorker"],
-        "types": ["vite/client"],
+        "types": ["vite/client", "unplugin-icons/types/svelte"],
         "paths": {
             "@/*": ["./resources/src/*"]
         }
     },
     "include": [
-        "resources/src/**/*.ts"
+        "resources/src/**/*.ts",
+        "resources/src/**/*.svelte"
     ]
 }
