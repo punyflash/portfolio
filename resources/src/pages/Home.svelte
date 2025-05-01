@@ -4,6 +4,7 @@
 
 <script lang="ts">
     import { onMount } from 'svelte'
+    import { _ } from 'svelte-i18n'
 
     let carousel: HTMLElement = $state()
 
@@ -38,15 +39,15 @@
 </script>
 
 <svelte:head>
-    <title>Dmytro Morozov | Full Stack Web Developer</title>
+    <title>{$_('Dmytro Morozov')} | {$_('Full Stack Web Developer')}</title>
 </svelte:head>
 
 <section class="hero bg-base-100 flex-1">
     <div class="hero-content text-left gap-20">
         <div>
-            <h1 class="text-5xl font-bold">Dmytro Morozov</h1>
+            <h1 class="text-5xl font-bold">{$_('Dmytro Morozov')}</h1>
             <p class="py-6">
-                Full Stack Web Developer
+                {$_('Full Stack Web Developer')}
             </p>
             <div class="flex gap-2">
                 {#each socials as { icon, url }}
