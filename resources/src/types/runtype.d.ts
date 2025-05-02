@@ -4,8 +4,8 @@ export type ProjectResourceType = {
 id:number
 title:string
 slug:string
-subtitle:string
 description:string
+subtitle:string
 content:string
 started_at:string
 ended_at:string

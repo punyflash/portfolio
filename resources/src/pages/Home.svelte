@@ -1,12 +1,8 @@
-<script lang="ts" module>
-    export { default as layout } from "../components/layouts/App.svelte";
-</script>
-
 <script lang="ts">
-    import { onMount } from 'svelte'
     import { _ } from 'svelte-i18n'
+    import Carousel from '@/components/Carousel.svelte';
 
-    let carousel: HTMLElement = $state()
+    let carousel: Carousel = $state()
 
     const items = $state([
         { alt: "PHP", src: import("../assets/img/php.svg") },
@@ -27,15 +23,6 @@
         { icon: import("~icons/cib/mail-ru"), url: "mailto:puny.flash@gmail.com" },
         { icon: import("~icons/cil/phone"), url: "tel:+380681076687" },
     ])
-
-    onMount(() => {
-        const timeout = setInterval(() => {
-            carousel.children[1].scrollIntoView({ behavior: "smooth" })
-            setTimeout(() => items.push(items.shift()), 250)
-        }, 2000)
-
-        return () => clearInterval(timeout)
-    })
 </script>
 
 <svelte:head>
@@ -59,14 +46,20 @@
                 {/each}
             </div>
         </div>
-        <div class="carousel rounded-box w-64 h-64 gap-6" bind:this={carousel}>
-            {#each items as { src, alt } (alt)}
-                <div class="carousel-item w-full">
-                    {#await src then src}
-                        <img src={src.default} {alt} class="w-full" />
-                    {/await}
-                </div>
-            {/each}
-        </div>
+        <Carousel
+            class="rounded-box w-64 h-64 gap-6"
+            itemClass="w-full"
+            scroll={false}
+            items={items}
+            infinite
+            loop={2000}
+            bind:this={carousel}
+        >
+            {#snippet item({ src, alt })}
+                {#await src then src}
+                    <img src={src.default} {alt} class="w-full" />
+                {/await}
+            {/snippet}
+        </Carousel>
     </div>
 </section>

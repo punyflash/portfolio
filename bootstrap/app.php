@@ -15,12 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Spatie\Honeypot\ProtectAgainstSpam::class,
         ]);
-
-        $middleware->priority([
-            \LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
-            \LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
-            \App\Http\Middleware\HandleInertiaRequests::class,
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

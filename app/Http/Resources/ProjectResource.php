@@ -14,13 +14,13 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'subtitle' => $this->subtitle,
             'description' => $this->description,
-            'content' => $this->content,
-            'started_at' => $this->started_at,
-            'ended_at' => $this->ended_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'subtitle' => $this->whenNotNull($this->subtitle),
+            'content' => $this->whenNotNull($this->content),
+            'started_at' => $this->whenNotNull($this->started_at),
+            'ended_at' => $this->whenNotNull($this->ended_at),
+            'created_at' => $this->whenNotNull($this->created_at),
+            'updated_at' => $this->whenNotNull($this->updated_at),
         ];
     }
 }

@@ -30,7 +30,7 @@
             <div class="text-center">
                 <h1 class="text-5xl font-bold">Contact</h1>
             </div>
-            <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+            <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
                     <form class="card-body gap-4 items-center" {onsubmit}>
                         <Honeypot {honeypot} {form} />
 

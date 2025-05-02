@@ -2,8 +2,10 @@
     import { _, locale } from 'svelte-i18n'
     import { inertia } from "@inertiajs/svelte";
     import ThemeChange from "../ThemeChange.svelte";
+    import LocaleChange from "../LocaleChange.svelte";
     import home from '#/routes/localized/home';
-    import { index as contact } from '#/routes/contact';
+    import { index as contact } from '#/routes/localized/contact';
+    import { index as projects } from '#/routes/localized/projects';
 
     const { children } = $props()
 </script>
@@ -11,16 +13,21 @@
 <main class="min-h-screen bg-base-100 text-base-content flex flex-col">
     <header class="navbar bg-base-200 shadow-md">
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl" href={home.url({ locale: $locale })} use:inertia>{$_('Dmytro Morozov')}</a>
+            {#key $locale}
+                <a class="btn btn-ghost text-xl" href={home.url({ locale: $locale })} use:inertia>{$_('Dmytro Morozov')}</a>
+            {/key}
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="#about">{$_('About')}</a></li>
-                <li><a href="#projects">{$_('Projects')}</a></li>
-                <li><a href={contact.url()} use:inertia>{$_('Contact')}</a></li>
+                {#key $locale}
+                    <li><a href={home.url({ locale: $locale })} use:inertia>{$_('Blog')}</a></li>
+                    <li><a href={projects.url({ locale: $locale })} use:inertia>{$_('Projects')}</a></li>
+                    <li><a href={contact.url({ locale: $locale })} use:inertia>{$_('Contact')}</a></li>
+                {/key}
             </ul>
         </div>
         <ThemeChange class="capitalize select select-sm w-32" />
+        <LocaleChange />
     </header>
 
     {@render children()}

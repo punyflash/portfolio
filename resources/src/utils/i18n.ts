@@ -14,8 +14,8 @@ export function prepareTranslation(fallbackLocale: string, initialLocale: string
         if (!page?.props?.locale) {
             return
         }
-        const newLocale = page.props.locale as { default: string, fallback: string }
-        locale.set(newLocale.default);
+        const newLocale = page.props.locale as { current: string, fallback: string }
+        locale.set(newLocale.current);
     })
 
     return init({ fallbackLocale, initialLocale });

@@ -7,7 +7,12 @@ import { prepareTranslation } from './utils/i18n'
 createServer(page =>
     createInertiaApp({
         page,
-        resolve: name => resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob<ResolvedComponent>('./pages/**/*.svelte')),
+        async resolve(name) {
+            const component = await resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob<ResolvedComponent>('./pages/**/*.svelte'))
+            // @ts-ignore
+            component.layout = component.layout || App
+            return component
+        },
         setup: ({ App, props }) => {
             const locale = props.initialPage.props.locale as { default: string, fallback: string }
 
