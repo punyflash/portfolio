@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { mdsvex } from "mdsvex";
 import { run } from "vite-plugin-run";
 import icons from 'unplugin-icons/vite'
 import svg from 'vite-plugin-svelte-svg';
@@ -28,7 +29,11 @@ export default defineConfig({
             }
         ]),
         svelte({
-            preprocess: [vitePreprocess({ script: true })],
+            extensions: ['.svelte', '.svx'],
+            preprocess: [
+                vitePreprocess({ script: true }),
+                mdsvex(),
+            ],
         }),
         icons({
             autoInstall: true,

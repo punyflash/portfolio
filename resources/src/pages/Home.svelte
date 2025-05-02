@@ -1,6 +1,7 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n'
     import Carousel from '@/components/Carousel.svelte';
+    import MetaData from '@/components/MetaData.svelte';
 
     let carousel: Carousel = $state()
 
@@ -26,7 +27,7 @@
 </script>
 
 <svelte:head>
-    <title>{$_('Dmytro Morozov')} | {$_('Full Stack Web Developer')}</title>
+    <MetaData title={$_('Full Stack Web Developer')} />
 </svelte:head>
 
 <section class="hero bg-base-100 flex-1">

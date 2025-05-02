@@ -10,6 +10,7 @@
     import User from "~icons/cil/user";
     import Phone from "~icons/cil/phone";
     import Mail from "~icons/ant-design/mail-outlined";
+    import MetaData from "@/components/MetaData.svelte";
 
     const { honeypot } = $props();
 
@@ -27,6 +28,10 @@
         $form.submit(store());
     }
 </script>
+
+<svelte:head>
+    <MetaData title={$_('Contact')} />
+</svelte:head>
 
 <div class="flex-1 flex items-center justify-center p-8">
     <div class="container flex flex-col gap-8 items-center justify-center">

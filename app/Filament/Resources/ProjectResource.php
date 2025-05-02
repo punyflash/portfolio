@@ -12,7 +12,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProjectResource extends Resource
 {
@@ -28,11 +30,18 @@ class ProjectResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title'),
                 Forms\Components\TextInput::make('subtitle'),
-                Forms\Components\TextInput::make('url')->columnSpanFull(),
                 Forms\Components\Textarea::make('description')->columnSpanFull(),
                 Forms\Components\DateTimePicker::make('started_at'),
                 Forms\Components\DateTimePicker::make('ended_at'),
-                Forms\Components\MarkdownEditor::make('content')->columnSpanFull(),
+                Forms\Components\MarkdownEditor::make('content')
+                    ->columnSpanFull()
+                    ->saveUploadedFileAttachmentsUsing(static fn ($record, $file) => tap(
+                        $record->addMedia($file)
+                            ->usingFileName($file->getClientOriginalName())
+                            ->toMediaCollection('content', 'public'),
+                        fn () => $file->delete(),
+                    ))
+                    ->getUploadedAttachmentUrlUsing(static fn ($file) => $file->getUrl()),
             ]);
     }
 

@@ -23,7 +23,6 @@ class Project extends Model implements HasMedia
         'title',
         'slug',
         'subtitle',
-        'url',
         'description',
         'content',
         'started_at',

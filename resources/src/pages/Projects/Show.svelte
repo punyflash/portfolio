@@ -1,15 +1,25 @@
 <script lang="ts">
-    import type { ProjectResourceType } from "@/types";
+    import MetaData from "@/components/MetaData.svelte";
+    import type { ProjectResourceType, FrontMatter } from "@/types";
+    import { compile } from 'mdsvex';
 
     const { project }: { project: { data: ProjectResourceType }} = $props()
 
-    $inspect(project)
+    const content = $derived(project?.data?.content && compile(project.data.content))
 </script>
 
-<div class="flex-1 p-8 flex flex-col">
+<svelte:head>
+    {#await content then content}
+        <MetaData {...content.data.fm as FrontMatter} />
+    {/await}
+</svelte:head>
+
+<div class="flex-1 p-8 flex flex-col items-center">
     <div class="container">
-        <h1 class="text-3xl font-bold mb-4">{project.data.title}</h1>
-        <p>{project.data.description}</p>
-        {@html project.data.content}
+        <article class="prose max-w-none">
+            {#await content then content}
+                {@html content.code}
+            {/await}
+        </article>
     </div>
 </div>

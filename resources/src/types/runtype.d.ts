@@ -18,7 +18,6 @@ description:string
 subtitle:string
 content:string
 started_at:string
-ended_at:string
 created_at:string
 updated_at:string
 }

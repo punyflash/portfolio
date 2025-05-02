@@ -8,7 +8,7 @@
     import { index as projects } from "#/routes/localized/projects";
     import { index as blog } from "#/routes/localized/blog";
 
-    const { children } = $props();
+    const { children, meta = null } = $props();
 </script>
 
 <main class="min-h-screen bg-base-100 text-base-content flex flex-col">

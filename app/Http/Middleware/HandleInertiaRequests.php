@@ -16,11 +16,28 @@ class HandleInertiaRequests extends Middleware
             'locale' => fn () => [
                 'current' => app()->getLocale(),
                 'fallback' => app()->getFallbackLocale(),
+                'canonical' => $this->getCanonicalUrl($request),
                 'translations' => $this->getRouteTranslations($request),
             ],
             'honeypot' => static fn () => app(Honeypot::class),
             'flash.success' => static fn () => $request->session()->get('success'),
         ];
+    }
+
+    protected function getCanonicalUrl(Request $request): ?string
+    {
+        $route = $request->route()->getName();
+
+        if (! str_starts_with($route, config('localization.routes.name_prefix'))) {
+            return null;
+        }
+
+        $route = str_replace(config('localization.routes.name_prefix'), '', $route);
+        $parameters = $request->route()->parameters();
+
+        unset($parameters['locale']);
+
+        return route($route, $parameters);
     }
 
     protected function getRouteTranslations(Request $request): array

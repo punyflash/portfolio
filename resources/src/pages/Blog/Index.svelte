@@ -4,9 +4,14 @@
     import { _, locale } from "svelte-i18n";
     import { blur } from "svelte/transition";
     import { show } from "#/routes/localized/blog/show";
+    import MetaData from "@/components/MetaData.svelte";
 
-    const { posts }: { projects: Paginated<BlogPostResourceType> } = $props();
+    const { posts }: { posts: Paginated<BlogPostResourceType> } = $props();
 </script>
+
+<svelte:head>
+    <MetaData title={$_('Blog')} />
+</svelte:head>
 
 <div class="flex-1 p-8 flex flex-col items-center">
     <div class="container flex flex-col items-center gap-6">
