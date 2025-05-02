@@ -111,10 +111,10 @@ return [
 
         'names' => [
             'parameter' => RouteName::Parameter,
-            'header'    => RouteName::Header,
-            'cookie'    => RouteName::Cookie,
-            'session'   => RouteName::Session,
-            'column'    => RouteName::Column,
+            'header' => RouteName::Header,
+            'cookie' => RouteName::Cookie,
+            'session' => RouteName::Session,
+            'column' => RouteName::Column,
         ],
 
         /*
@@ -229,14 +229,14 @@ return [
             'google' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Google',
 
-                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'enabled' => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
                 'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
             ],
 
             'deepl' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Deepl',
 
-                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'enabled' => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
                 'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
 
                 'credentials' => [
@@ -247,11 +247,11 @@ return [
             'yandex' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Yandex',
 
-                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'enabled' => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
                 'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
 
                 'credentials' => [
-                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'key' => (string) env('TRANSLATION_YANDEX_KEY'),
                     'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
                 ],
             ],
