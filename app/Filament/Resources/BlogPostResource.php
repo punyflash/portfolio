@@ -6,6 +6,7 @@ use App\Filament\Resources\BlogPostResource\Pages;
 use App\Filament\Resources\BlogPostResource\RelationManagers;
 use App\Models\BlogPost;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -26,6 +27,10 @@ class BlogPostResource extends Resource
     {
         return $form
             ->schema([
+                SpatieMediaLibraryFileUpload::make('banner')
+                    ->collection('banner')
+                    ->disk('public')
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('title'),
                 Forms\Components\TextInput::make('subtitle'),
                 Forms\Components\Textarea::make('description')->columnSpanFull(),

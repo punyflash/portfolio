@@ -6,6 +6,7 @@ title:string
 slug:string
 subtitle:string
 description:string
+banner:string
 content:string
 published_at:string
 }

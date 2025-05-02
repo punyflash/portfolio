@@ -14,13 +14,14 @@
         { alt: "Vue", src: import("../assets/img/vue.svg") },
         { alt: "Livewire", src: import("../assets/img/livewire.svg") },
         { alt: "Tailwind", src: import("../assets/img/tailwind.svg") },
+        { alt: "Docker", src: import("../assets/img/docker.svg") },
     ])
 
     const socials = $state([
         { icon: import("~icons/cib/github"), url: "https://github.com/punyflash" },
         { icon: import("~icons/cib/linkedin"), url: "https://linkedin.com/in/punyflash" },
         { icon: import("~icons/cib/stackoverflow"), url: "https://stackoverflow.com/users/10249529" },
-        { icon: import("~icons/cib/telegram"), url: "https://t.me/punyflash" },
+        { icon: import("~icons/cib/telegram-plane"), url: "https://t.me/punyflash" },
         { icon: import("~icons/cib/mail-ru"), url: "mailto:puny.flash@gmail.com" },
         { icon: import("~icons/cil/phone"), url: "tel:+380681076687" },
     ])

@@ -15,6 +15,7 @@ class BlogController extends Controller
             'posts' => Inertia::deepMerge(
                 fn() => BlogPostResource::collection(
                     BlogPost::where('published_at', '<=', now())
+                        ->with('banner')
                         ->orderBy('published_at', 'desc')
                         ->select(['id', 'title', 'slug', 'subtitle', 'description', 'published_at'])
                         ->cursorPaginate(12),

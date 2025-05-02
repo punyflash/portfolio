@@ -16,6 +16,26 @@
 
 <svelte:window on:click={() => dropdown.open = false} />
 
+{#snippet links()}
+    {#key $locale}
+        <li>
+            <a href={blog.url({ locale: $locale })} use:inertia>
+                {$_("Blog")}
+            </a>
+        </li>
+        <li>
+            <a href={projects.url({ locale: $locale })} use:inertia>
+                {$_("Projects")}
+            </a>
+        </li>
+        <li>
+            <a href={contact.url({ locale: $locale })} use:inertia>
+                {$_("Contact")}
+            </a>
+        </li>
+    {/key}
+{/snippet}
+
 <main class="min-h-screen bg-base-100 text-base-content flex flex-col">
     <header class="navbar bg-base-200 shadow-md px-6">
         <div class="flex-1">
@@ -29,48 +49,16 @@
         </div>
         <div class="hidden sm:flex flex-none">
             <ul class="menu menu-horizontal px-1">
-                {#key $locale}
-                    <li>
-                        <a href={blog.url({ locale: $locale })} use:inertia
-                            >{$_("Blog")}</a
-                        >
-                    </li>
-                    <li>
-                        <a href={projects.url({ locale: $locale })} use:inertia
-                            >{$_("Projects")}</a
-                        >
-                    </li>
-                    <li>
-                        <a href={contact.url({ locale: $locale })} use:inertia
-                            >{$_("Contact")}</a
-                        >
-                    </li>
-                {/key}
+                {@render links()}
             </ul>
         </div>
         <details bind:this={dropdown} class="dropdown dropdown-bottom dropdown-end sm:hidden">
             <summary class="btn btn-sm btn-ghost">
                 <ChevronDown class="w-full" />
             </summary>
-            {#key $locale}
             <ul role="menu" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 p-2 shadow-sm">
-                <li>
-                    <a href={blog.url({ locale: $locale })} use:inertia
-                        >{$_("Blog")}</a
-                    >
-                </li>
-                <li>
-                    <a href={projects.url({ locale: $locale })} use:inertia
-                        >{$_("Projects")}</a
-                    >
-                </li>
-                <li>
-                    <a href={contact.url({ locale: $locale })} use:inertia
-                        >{$_("Contact")}</a
-                    >
-                </li>
+                {@render links()}
             </ul>
-            {/key}
         </details>
         <LocaleChange />
     </header>
@@ -80,8 +68,7 @@
     <footer class="footer p-6 bg-base-300 text-base-content">
         <div class="items-center grid-flow-row justify-center lg:grid-flow-col lg:justify-between w-full text-xs sm:text-sm">
             <p>
-                © {new Date().getFullYear()}
-                {$_("Dmytro Morozov")}. {$_("All rights reserved")}.
+                {new Date().getFullYear()} © {$_("All rights reserved")}.
             </p>
             <div class="flex items-center justify-center w-full">
                 <ThemeChange class="capitalize select select-sm w-32" />

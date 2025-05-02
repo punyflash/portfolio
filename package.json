@@ -17,6 +17,7 @@
         "axios": "^1.9.0",
         "concurrently": "^9.1.2",
         "daisyui": "^5.0.30",
+        "dayjs": "^1.11.13",
         "globals": "^16.0.0",
         "laravel-vite-plugin": "^1.2.0",
         "mdsvex": "^0.12.5",

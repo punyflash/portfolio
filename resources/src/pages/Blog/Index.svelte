@@ -4,7 +4,9 @@
     import { _, locale } from "svelte-i18n";
     import { blur } from "svelte/transition";
     import { show } from "#/routes/localized/blog/show";
+    import { dayjs } from "@/utils/i18n";
     import MetaData from "@/components/MetaData.svelte";
+    import Callendar from "~icons/cil/calendar";
 
     const { posts }: { posts: Paginated<BlogPostResourceType> } = $props();
 </script>
@@ -26,9 +28,22 @@
                     class="card w-full bg-base-200 shadow-xl hover:scale-105 transition"
                     in:blur
                 >
-                    <div class="card-body">
+                    <figure>
+                        <img
+                        src={post.banner}
+                        alt={post.title} />
+                    </figure>
+                    <div class="card-body gap-2">
                         <h2 class="card-title">{post.title}</h2>
-                        <p>{post.description}</p>
+                        <hr class="text-base-content/30">
+                        {#if post.subtitle}
+                            <h3 class="card-title text-base font-normal">{post.subtitle}</h3>
+                            <hr class="text-base-content/30">
+                        {/if}
+                        <p class="text-base-content/70 flex-1">{post.description}</p>
+                        <span class="flex items-center justify-end gap-2">
+                            <Callendar class="inline-block" /> {$dayjs(post.published_at).format("L LT")}
+                        </span>
                     </div>
                 </a>
             {:else}
