@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f520ceb03e10927ec01b0d49d9c76c28",
+    "content-hash": "6d3718ba2eec08c0888dd3aad1de7c14",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -13293,6 +13293,81 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "vagebond/runtype",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vagebnd/runtype.git",
+                "reference": "8371e23263cb9dda67367aff9095d9c616410c0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vagebnd/runtype/zipball/8371e23263cb9dda67367aff9095d9c616410c0d",
+                "reference": "8371e23263cb9dda67367aff9095d9c616410c0d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.0||^12.0",
+                "nikic/php-parser": "^5.4",
+                "php": "^8.2||^8.3||^8.4",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9||^3.0",
+                "laravel/pint": "^1.21",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^10.0.0||^9.0.0||^8.22.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "phpstan/extension-installer": "^2.0||^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.0||^2.0",
+                "phpstan/phpstan-phpunit": "^1.3||^2.0",
+                "spatie/temporary-directory": "^2.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Runtype": "Vagebond\\Runtype\\Facades\\Runtype"
+                    },
+                    "providers": [
+                        "Vagebond\\Runtype\\RuntypeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vagebond\\Runtype\\": "src",
+                    "Vagebond\\Runtype\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gianluca Riggio",
+                    "email": "luca@maximumawesome.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Transform Laravel Resources and models into Typescript interfaces",
+            "homepage": "https://github.com/vagebnd/runtype",
+            "keywords": [
+                "generator",
+                "laravel",
+                "runtype",
+                "typescript",
+                "vagebond"
+            ],
+            "support": {
+                "issues": "https://github.com/vagebnd/runtype/issues",
+                "source": "https://github.com/vagebnd/runtype/tree/0.3.1"
+            },
+            "time": "2025-04-01T21:11:32+00:00"
         }
     ],
     "aliases": [],

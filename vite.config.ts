@@ -15,11 +15,18 @@ export default defineConfig({
             ssr: ['resources/src/ssr.ts'],
             refresh: true,
         }),
-        run([{
-            name: 'wayfinder',
-            run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder'],
-            pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
-        }]),
+        run([
+            {
+                name: 'wayfinder',
+                run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder'],
+                pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
+            },
+            {
+                name: 'runtype',
+                run: ['php', 'artisan', 'runtype:generate'],
+                pattern: ["app/**/*.php"],
+            }
+        ]),
         svelte({
             preprocess: [vitePreprocess({ script: true })],
         }),
