@@ -3,6 +3,7 @@ import createServer from '@inertiajs/svelte/server'
 import { render } from 'svelte/server'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { prepareTranslation } from './utils/i18n'
+import Layout from './components/layouts/App.svelte'
 
 createServer(page =>
     createInertiaApp({
@@ -10,15 +11,14 @@ createServer(page =>
         async resolve(name) {
             const component = await resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob<ResolvedComponent>('./pages/**/*.svelte'))
             // @ts-ignore
-            component.layout = component.layout || App
-            return component
+            return {default: component.default, layout: component.layout || Layout} as ResolvedComponent
         },
         setup: ({ App, props }) => {
             const locale = props.initialPage.props.locale as { default: string, fallback: string }
 
             prepareTranslation(locale.fallback, locale.default)
 
-            render(App, { props })
+            return render(App, { props })
         }
     }),
 )

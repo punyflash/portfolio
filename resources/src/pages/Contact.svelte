@@ -8,7 +8,7 @@
     import { store } from "#/routes/contact/store";
     import User from '~icons/cil/user'
     import Phone from '~icons/cil/phone'
-    import Mail from '~icons/cib/mail-ru'
+    import Mail from '~icons/ant-design/mail-outlined'
 
     const { honeypot } = $props()
 
@@ -31,12 +31,12 @@
                 <h1 class="text-5xl font-bold">Contact</h1>
             </div>
             <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
-                    <form class="card-body gap-4 items-center" {onsubmit}>
+                    <form class="card-body gap-2 items-center" {onsubmit}>
                         <Honeypot {honeypot} {form} />
 
-                        <label class="input w-full">
+                        <label class="input w-full {$form.errors.name ? 'input-error' : ''}">
                             <User class="w-4 h-4" />
-                            <input type="text" id="name" name="name" class="grow" placeholder="Name" />
+                            <input bind:value={$form.name} type="text" id="name" name="name" class="grow" placeholder="Name" />
                         </label>
                         {#if $form.errors.name}
                             <label class="label" for="name">
@@ -44,9 +44,9 @@
                             </label>
                         {/if}
 
-                        <label class="input w-full">
+                        <label class="input w-full {$form.errors.email ? 'input-error' : ''}">
                             <Mail class="w-4 h-4" />
-                            <input type="email" id="email" name="email" class="grow" placeholder="Email" />
+                            <input bind:value={$form.email} type="email" id="email" name="email" class="grow" placeholder="Email" />
                         </label>
                         {#if $form.errors.email}
                             <label class="label" for="email">
@@ -54,9 +54,9 @@
                             </label>
                         {/if}
 
-                        <label class="input w-full">
+                        <label class="input w-full {$form.errors.phone ? 'input-error' : ''}">
                             <Phone class="w-4 h-4" />
-                            <input type="tel" id="phone" name="phone" class="grow" placeholder="Phone" />
+                            <input bind:value={$form.phone} type="tel" id="phone" name="phone" class="grow" placeholder="Phone" />
                         </label>
                         {#if $form.errors.phone}
                             <label class="label" for="phone">
@@ -64,7 +64,7 @@
                             </label>
                         {/if}
 
-                        <textarea id="message" name="message" class="textarea w-full" placeholder="Message"></textarea>
+                        <textarea bind:value={$form.message} id="message" name="message" class="textarea w-full {$form.errors.message ? 'textarea-error' : ''}" placeholder="Message"></textarea>
                         {#if $form.errors.message}
                             <label class="label" for="message">
                                 <span class="label-text-alt text-error">{$form.errors.message}</span>
