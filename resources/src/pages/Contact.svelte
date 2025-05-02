@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+    import { _ } from 'svelte-i18n'
     import { useForm } from "@inertiajs/svelte";
     import Honeypot, { withHoneypot } from "@/components/Honeypot.svelte";
     import { store } from "#/routes/contact/store";
@@ -28,7 +29,7 @@
 <div class="flex-1 flex items-center justify-center">
     <div class="container flex flex-col gap-8 items-center justify-center">
             <div class="text-center">
-                <h1 class="text-5xl font-bold">Contact</h1>
+                <h1 class="text-5xl font-bold">{$_('Contact')}</h1>
             </div>
             <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
                     <form class="card-body gap-2 items-center" {onsubmit}>
@@ -46,7 +47,7 @@
 
                         <label class="input w-full {$form.errors.email ? 'input-error' : ''}">
                             <Mail class="w-4 h-4" />
-                            <input bind:value={$form.email} type="email" id="email" name="email" class="grow" placeholder="Email" />
+                            <input bind:value={$form.email} type="email" id="email" name="email" class="grow" placeholder={$_('Email')} />
                         </label>
                         {#if $form.errors.email}
                             <label class="label" for="email">
@@ -56,7 +57,7 @@
 
                         <label class="input w-full {$form.errors.phone ? 'input-error' : ''}">
                             <Phone class="w-4 h-4" />
-                            <input bind:value={$form.phone} type="tel" id="phone" name="phone" class="grow" placeholder="Phone" />
+                            <input bind:value={$form.phone} type="tel" id="phone" name="phone" class="grow" placeholder={$_('Phone')} />
                         </label>
                         {#if $form.errors.phone}
                             <label class="label" for="phone">
@@ -64,7 +65,7 @@
                             </label>
                         {/if}
 
-                        <textarea bind:value={$form.message} id="message" name="message" class="textarea w-full {$form.errors.message ? 'textarea-error' : ''}" placeholder="Message"></textarea>
+                        <textarea bind:value={$form.message} id="message" name="message" class="textarea w-full {$form.errors.message ? 'textarea-error' : ''}" placeholder={$_('Message')}></textarea>
                         {#if $form.errors.message}
                             <label class="label" for="message">
                                 <span class="label-text-alt text-error">{$form.errors.message}</span>
