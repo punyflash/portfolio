@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Filament\Resources\ProjectResource\Pages;
+namespace App\Filament\Resources\BlogPostResource\Pages;
 
-use App\Filament\Resources\ProjectResource;
+use App\Filament\Resources\BlogPostResource;
 use App\Filament\Traits\CleansUpUnusedMedia;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditProject extends EditRecord
+class EditBlogPost extends EditRecord
 {
     use EditRecord\Concerns\Translatable,
         CleansUpUnusedMedia;
 
-    protected static string $resource = ProjectResource::class;
+    protected static string $resource = BlogPostResource::class;
 
     protected function getHeaderActions(): array
     {

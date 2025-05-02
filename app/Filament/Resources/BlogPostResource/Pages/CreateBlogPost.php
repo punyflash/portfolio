@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\ProjectResource\Pages;
+namespace App\Filament\Resources\BlogPostResource\Pages;
 
-use App\Filament\Resources\ProjectResource;
+use App\Filament\Resources\BlogPostResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateProject extends CreateRecord
+class CreateBlogPost extends CreateRecord
 {
     use CreateRecord\Concerns\Translatable;
 
-    protected static string $resource = ProjectResource::class;
+    protected static string $resource = BlogPostResource::class;
 
     protected function getHeaderActions(): array
     {
