@@ -19,7 +19,7 @@ export default defineConfig({
         run([
             {
                 name: 'wayfinder',
-                run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder'],
+                run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder', '--skip-actions'],
                 pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
             },
             {
