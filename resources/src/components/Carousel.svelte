@@ -90,6 +90,8 @@
     })
 </script>
 
+<svelte:window onresize={() => carousel.children[slide].scrollIntoView({ behavior: "smooth" })}/>
+
 <div class="relative flex flex-col gap-4">
     <div class="carousel {restProps.scroll === false ? 'scroll-auto snap-none overflow-hidden' : ''} {restProps.class || ''}" bind:this={carousel}>
         {#each items as _item}

@@ -9,7 +9,7 @@
     const { target = null, ...restProps }: { target?: HTMLElement, [key: string]: any } = $props();
 
     const themes = [
-        "light", "dark", "cupcake", "bumblebee", "emerald",
+        "cupcake", "bumblebee", "emerald",
         "corporate", "synthwave", "retro", "cyberpunk", "valentine",
         "halloween", "garden", "forest", "aqua", "lofi",
         "pastel", "fantasy", "wireframe", "black", "luxury",
@@ -24,7 +24,7 @@
 
 <svelte:window on:click={() => dropdown.open = false} />
 
-<details class="dropdown dropdown-end dropdown-bottom" bind:this={dropdown}>
+<details class="dropdown dropdown-end dropdown-top" bind:this={dropdown}>
     <summary class="btn btn-sm btn-ghost capitalize">
         <Palette/> {#if value} {value} {:else} System {/if}
     </summary >
@@ -33,6 +33,16 @@
             <li data-theme="" class:menu-active={value === ""} >
                 <button class="capitalize" onclick={() => value = ""}>
                     <Monitor class="text-primary" /> System
+                </button>
+            </li>
+            <li data-theme="light" class:menu-active={value === "light"} >
+                <button class="capitalize" onclick={() => value = "light"}>
+                    <Chevron class="text-primary" /> Light
+                </button>
+            </li>
+            <li data-theme="dark" class:menu-active={value === "dark"} >
+                <button class="capitalize" onclick={() => value = "dark"}>
+                    <Chevron class="text-primary" /> Dark
                 </button>
             </li>
             <div class="divider my-0"></div>
