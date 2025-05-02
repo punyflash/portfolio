@@ -36,6 +36,7 @@ class Project extends Model implements HasMedia
     ];
 
     public $translatable = [
+        'slug',
         'title',
         'subtitle',
         'description',

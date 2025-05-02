@@ -4,6 +4,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/css
+/public/js
 /resources/src/.wayfinder
 /storage/*.key
 /storage/pail
