@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Sluggable\HasTranslatableSlug;
+use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
@@ -17,6 +17,7 @@ class BlogPost extends Model implements HasMedia
     /** @use HasFactory<\Database\Factories\BlogPostFactory> */
     use HasFactory,
         HasTranslations,
+        HasSlug,
         InteractsWithMedia;
 
     protected $fillable = [
