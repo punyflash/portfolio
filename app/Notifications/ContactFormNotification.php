@@ -26,7 +26,6 @@ class ContactFormNotification extends Notification
         $app = config('app.name');
 
         return (new MailMessage)
-            ->from($this->data['email'], $this->data['name'])
             ->subject("[{$app}] Contact Form Submission")
             ->markdown('mail.contact-form', $this->data);
     }
