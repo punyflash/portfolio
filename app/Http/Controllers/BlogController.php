@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\BlogPostResource;
 use App\Models\BlogPost;
+use App\Models\Comment;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,6 +30,13 @@ class BlogController extends Controller
     {
         return Inertia::render('Blog/Show', [
             'post' => fn() => $post->toResource(),
+            'comments' => fn () => Comment::treeOf(
+                fn ($q) => $q->whereNull('parent_id')
+                    ->where('commentable_id', $post->id)
+                    ->where('commentable_type', BlogPost::class)
+                    ->where('language', app()->getLocale())
+                    ->approved()
+            )->where('language', app()->getLocale())->approved()->get()->toTree()->toResourceCollection(),
         ]);
     }
 }

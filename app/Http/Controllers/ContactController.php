@@ -9,6 +9,11 @@ use Inertia\Inertia;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('throttle:1,1')->only('store');
+    }
+
     public function index()
     {
         return Inertia::render('Contact');

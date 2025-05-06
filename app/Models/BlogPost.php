@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -15,7 +16,6 @@ class BlogPost extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\BlogPostFactory> */
     use HasFactory,
-        HasTranslatableSlug,
         HasTranslations,
         InteractsWithMedia;
 
@@ -34,7 +34,6 @@ class BlogPost extends Model implements HasMedia
 
     public $translatable = [
         'title',
-        'slug',
         'subtitle',
         'description',
         'content',
@@ -43,7 +42,7 @@ class BlogPost extends Model implements HasMedia
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom(fn (BlogPost $post) => $post->getTranslation('title', 'en'))
             ->saveSlugsTo('slug');
     }
 
@@ -55,5 +54,10 @@ class BlogPost extends Model implements HasMedia
     public function banner(): MorphOne
     {
         return $this->media()->where('collection_name', 'banner')->one()->ofMany();
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

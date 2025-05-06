@@ -10,7 +10,6 @@
         "allowJs": true,
         "checkJs": true,
         "strict": false,
-        "isolatedModules": true,
         "noEmit": true,
         "lib": ["ESNext", "DOM", "WebWorker"],
         "types": ["vite/client", "unplugin-icons/types/svelte"],

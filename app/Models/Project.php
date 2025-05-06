@@ -15,7 +15,6 @@ class Project extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory,
-        HasTranslatableSlug,
         HasTranslations,
         InteractsWithMedia;
 
@@ -35,7 +34,6 @@ class Project extends Model implements HasMedia
     ];
 
     public $translatable = [
-        'slug',
         'title',
         'subtitle',
         'description',
@@ -45,7 +43,7 @@ class Project extends Model implements HasMedia
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom(fn (Project $project) => $project->getTranslation('title', 'en'))
             ->saveSlugsTo('slug');
     }
 

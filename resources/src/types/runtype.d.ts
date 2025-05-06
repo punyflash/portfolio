@@ -5,7 +5,6 @@ id:number
 title:string
 slug:string
 subtitle:string
-banner:string
 description:string
 content:string
 published_at:string
@@ -23,8 +22,17 @@ started_at:string
 created_at:string
 updated_at:string
 }
+// App\Http\Resources\CommentResource
+export type CommentResourceType = {
+id:number
+user:{name:string,avatar:string}
+permissions:{edit:boolean,delete:boolean}
+content:string
+children:CommentResourceType[]
+created_at:string
+updated_at:string
+}
 // App\Http\Resources\TagResource
 export type TagResourceType = {
 title:string
-icon:string
 }
