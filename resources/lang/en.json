@@ -233,5 +233,9 @@
     "Name": "Name",
     "Email": "Email",
     "Phone": "Phone",
-    "Message": "Message"
+    "Message": "Message",
+    "Reply": "Reply",
+    "Comments": "Comments",
+    "Add comment": "Add comment",
+    "No comments yet": "No comments yet"
 }

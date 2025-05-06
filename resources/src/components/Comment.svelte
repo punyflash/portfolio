@@ -54,18 +54,24 @@
                 <div class="card-title">{comment.user.name}</div>
                 <span class="text-sm opacity-50">{$timed(comment.created_at).fromNow()}</span>
                 <div class="ml-auto flex gap-0.5">
-                    <button class="btn btn-accent btn-circle btn-ghost btn-sm" type="button" onclick={() => replyDialog.toggle()}>
-                        <Reply />
-                    </button>
-                    {#if comment.permissions.edit}
-                        <button class="btn btn-circle btn-info btn-ghost btn-sm {edit ? 'btn-active' : ''}" type="button" onclick={() => edit = !edit}>
-                            <Pencil />
+                    <div class="tooltip" data-tip="{$_('Reply')}">
+                        <button class="btn btn-accent btn-circle btn-ghost btn-sm" type="button" onclick={() => replyDialog.toggle()}>
+                            <Reply />
                         </button>
+                    </div>
+                    {#if comment.permissions.edit}
+                        <div class="tooltip" data-tip="{$_('Edit')}">
+                            <button class="btn btn-circle btn-info btn-ghost btn-sm {edit ? 'btn-active' : ''}" type="button" onclick={() => edit = !edit}>
+                                <Pencil />
+                            </button>
+                        </div>
                     {/if}
                     {#if comment.permissions.delete}
-                        <button class="btn btn-circle btn-error btn-ghost btn-sm" type="button" onclick={() => deleteDialog.showModal()}>
-                            <Trash />
-                        </button>
+                        <div class="tooltip" data-tip="{$_('Delete')}">
+                            <button class="btn btn-circle btn-error btn-ghost btn-sm" type="button" onclick={() => deleteDialog.showModal()}>
+                                <Trash />
+                            </button>
+                        </div>
                     {/if}
                 </div>
             </div>
