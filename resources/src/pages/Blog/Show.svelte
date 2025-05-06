@@ -1,16 +1,16 @@
 <script lang="ts">
     import MetaData from "@/components/MetaData.svelte";
     import type { BlogPostResourceType, FrontMatter } from "@/types";
-    import { compile } from 'mdsvex';
+    import markdown from '@/utils/markdown';
 
     const { post }: { post: { data: BlogPostResourceType } } = $props();
 
-    const content = $derived(post?.data?.content && compile(post.data.content))
+    const content = $derived(post?.data?.content && markdown.process(post.data.content))
 </script>
 
 <svelte:head>
     {#await content then content}
-        <MetaData {...content.data.fm as FrontMatter} />
+        <MetaData {...content.data.meta as FrontMatter} />
     {/await}
 </svelte:head>
 
@@ -18,7 +18,7 @@
     <div class="container">
         <article class="prose max-w-none">
             {#await content then content}
-                {@html content.code}
+                {@html content.value}
             {/await}
         </article>
     </div>
