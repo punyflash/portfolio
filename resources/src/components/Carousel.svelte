@@ -35,7 +35,7 @@
     }
 
     $effect(() => {
-        if (restProps.infinite !== true) {
+        if (restProps.infinite !== true || items.length < 2) {
             return
         }
 
@@ -99,7 +99,7 @@
                 {@render item(_item)}
             </div>
         {/each}
-        {#if restProps.infinite}
+        {#if restProps.infinite && items.length >= 2}
             <div class="carousel-item {restProps.itemClass || ''}">
                 {@render item(items[0])}
             </div>

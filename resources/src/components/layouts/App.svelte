@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { fly } from "svelte/transition";
     import { _, locale } from "svelte-i18n";
-    import { inertia } from "@inertiajs/svelte";
+    import { inertia, page } from "@inertiajs/svelte";
     import ThemeChange from "../ThemeChange.svelte";
     import LocaleChange from "../LocaleChange.svelte";
     import home from "#/routes/localized/home";
@@ -10,7 +11,36 @@
     import ChevronDown from "~icons/cil/chevron-bottom";
     import Logo from "../Logo.svelte";
 
+    type Toast = {
+        id: number;
+        class: string;
+        message: string;
+    }
+
+    let toasts: Toast[] = $state([]);
+
+    page.subscribe(page => {
+        const flash = Object.entries(page.props.flash || {});
+
+        for (const [key, message] of flash) {
+            const id = performance.now()
+            const data: Toast = {
+                id, message, class: {
+                    success: "alert-success",
+                    error: "alert-error",
+                    warning: "alert-warning",
+                    info: "alert-info",
+                }[key] || "",
+            };
+
+            toasts.push(data);
+
+            setTimeout(() => toasts = toasts.filter(t => t.id !== id), 4000);
+        }
+    })
+
     const { children } = $props();
+
     let dropdown: HTMLDetailsElement = $state();
 </script>
 
@@ -76,3 +106,13 @@
         </div>
     </footer>
 </main>
+
+{#if toasts.length}
+    <div class="toast toast-top toast-end" role="alert" in:fly={{ x: 100 }} out:fly={{ x: 100 }}>
+        {#each toasts as toast, i (toast.message)}
+            <button type="button" onclick={() => toasts.splice(i, 1)} class="alert cursor-pointer {toast.class}" in:fly={{ x: 100 }} out:fly={{ x: 100 }}>
+                <span>{toast.message}</span>
+            </button>
+        {/each}
+    </div>
+{/if}

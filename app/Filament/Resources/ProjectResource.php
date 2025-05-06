@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Project;
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -31,6 +32,12 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('title'),
                 Forms\Components\TextInput::make('subtitle'),
                 Forms\Components\Textarea::make('description')->columnSpanFull(),
+                Forms\Components\Select::make('tags')
+                    ->multiple()
+                    ->relationship('tags', 'title')
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
                 Forms\Components\DateTimePicker::make('started_at'),
                 Forms\Components\DateTimePicker::make('ended_at'),
                 Forms\Components\MarkdownEditor::make('content')

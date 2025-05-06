@@ -15,6 +15,7 @@ class ProjectResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,
+            'tags' => $this->whenLoaded('tags', fn () => TagResource::collection($this->tags)),
             'subtitle' => $this->whenNotNull($this->subtitle),
             'content' => $this->whenNotNull($this->content),
             'started_at' => $this->whenNotNull($this->started_at),

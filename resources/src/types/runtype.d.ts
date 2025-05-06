@@ -5,6 +5,7 @@ id:number
 title:string
 slug:string
 subtitle:string
+banner:string
 description:string
 content:string
 published_at:string
@@ -15,9 +16,15 @@ id:number
 title:string
 slug:string
 description:string
+tags:TagResourceType[]
 subtitle:string
 content:string
 started_at:string
 created_at:string
 updated_at:string
+}
+// App\Http\Resources\TagResource
+export type TagResourceType = {
+title:string
+icon:string
 }

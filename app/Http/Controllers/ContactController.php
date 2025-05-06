@@ -23,9 +23,12 @@ class ContactController extends Controller
             'message' => ['required'],
         ]);
 
-        defer(static fn () => (new AnonymousNotifiable)
-            ->route('mail', 'puny.flash@gmail.com')
-            ->notify(new ContactFormNotification($data))
+        defer(static fn () => collect(config('services.contact'))
+            ->filter()
+            ->reduce(
+                static fn (AnonymousNotifiable $n, $value, string $route) => $n->route($route, $value),
+                new AnonymousNotifiable,
+            )->notify(new ContactFormNotification($data))
         );
 
         return $request->wantsJson() ?

@@ -20,7 +20,12 @@ class HandleInertiaRequests extends Middleware
                 'translations' => $this->getRouteTranslations($request),
             ],
             'honeypot' => static fn () => app(Honeypot::class),
-            'flash.success' => static fn () => $request->session()->get('success'),
+            'flash' => static fn () => collect([
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
+                'warning' => $request->session()->get('warning'),
+                'info' => $request->session()->get('info'),
+            ])->filter()
         ];
     }
 

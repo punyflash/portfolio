@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'contact' => [
+        'mail' => env('CONTACT_EMAIL'),
+        'telegram' => env('CONTACT_TELEGRAM'),
+    ],
+
 ];

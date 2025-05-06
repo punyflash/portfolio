@@ -27,7 +27,7 @@ class BlogPostResource extends Resource
     {
         return $form
             ->schema([
-                SpatieMediaLibraryFileUpload::make('banner')
+                Forms\Components\SpatieMediaLibraryFileUpload::make('banner')
                     ->collection('banner')
                     ->disk('public')
                     ->columnSpanFull(),

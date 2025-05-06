@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->json('title');
+            $table->integer('sort')->default(0);
 
             $table->timestamps();
         });

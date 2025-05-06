@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -18,12 +19,19 @@ class Tag extends Model implements HasMedia
         InteractsWithMedia;
 
     protected $fillable = [
-        'name',
+        'title',
+        'sort',
     ];
 
     public $translatable = [
-        'name',
+        'title',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', static fn (Builder $builder) => $builder->orderBy('sort'));
+    }
 
     public function projects(): BelongsToMany
     {
@@ -32,6 +40,6 @@ class Tag extends Model implements HasMedia
 
     public function icon(): MorphOne
     {
-        return $this->media()->where('collection_name', 'icons')->one()->ofMany();
+        return $this->media()->where('collection_name', 'icon')->one()->ofMany();
     }
 }

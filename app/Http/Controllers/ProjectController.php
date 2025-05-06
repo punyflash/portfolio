@@ -13,7 +13,9 @@ class ProjectController extends Controller
         return Inertia::render('Projects/Index', [
             'projects' => Inertia::deepMerge(
                 fn () => ProjectResource::collection(
-                    Project::select(['id', 'title', 'slug', 'description'])->cursorPaginate(12)
+                    Project::select(['id', 'title', 'subtitle', 'slug', 'description', 'started_at', 'ended_at'])
+                        ->with('tags.icon')
+                        ->cursorPaginate(12)
                 ),
             ),
         ]);
@@ -22,7 +24,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         return Inertia::render('Projects/Show', [
-            'project' => fn () =>new ProjectResource($project),
+            'project' => fn () => $project->toResource(),
         ]);
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34842c7eee4853099a21b11bef50856b",
+    "content-hash": "d35ae5104bc97801bbe6c2f6def3b4e4",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -9434,6 +9434,122 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "westacks/telebot",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/westacks/telebot.git",
+                "reference": "d4e7d6e0f6536525d1b6da4724fda331d86a4531"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/westacks/telebot/zipball/d4e7d6e0f6536525d1b6da4724fda331d86a4531",
+                "reference": "d4e7d6e0f6536525d1b6da4724fda331d86a4531",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nette/php-generator": "^4.0",
+                "pestphp/pest": "^3.0",
+                "psy/psysh": "^0.12",
+                "rector/rector": "^2.0",
+                "symfony/browser-kit": "^7.0",
+                "symfony/css-selector": "^7.0",
+                "symfony/http-client": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Helpers.php"
+                ],
+                "psr-4": {
+                    "WeStacks\\TeleBot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PunyFlash",
+                    "email": "puny.flash@gmail.com",
+                    "homepage": "https://github.com/PunyFlash"
+                }
+            ],
+            "description": "Easy way to create Telegram-bots in PHP",
+            "homepage": "https://github.com/westacks/telebot",
+            "support": {
+                "issues": "https://github.com/westacks/telebot/issues",
+                "source": "https://github.com/westacks/telebot/tree/4.0.2"
+            },
+            "time": "2025-04-22T17:26:14+00:00"
+        },
+        {
+            "name": "westacks/telebot-laravel",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/westacks/telebot-laravel.git",
+                "reference": "053efba730718b4d025efb7151140712c689b49b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/westacks/telebot-laravel/zipball/053efba730718b4d025efb7151140712c689b49b",
+                "reference": "053efba730718b4d025efb7151140712c689b49b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9.0 || ^10.0 || ^11.0 || ^12.0",
+                "php": "^8.2",
+                "westacks/telebot": "^4.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nette/php-generator": "^4.1",
+                "orchestra/testbench": "^7.0 || ^8.0 || ^9.0 || ^10.0",
+                "pestphp/pest": "^3.0",
+                "rector/rector": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"
+                    },
+                    "providers": [
+                        "WeStacks\\TeleBot\\Laravel\\Providers\\TeleBotServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WeStacks\\TeleBot\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PunyFlash",
+                    "email": "puny.flash@gmail.com",
+                    "homepage": "https://github.com/PunyFlash"
+                }
+            ],
+            "description": "Telebot adapter for Laravel",
+            "support": {
+                "issues": "https://github.com/westacks/telebot-laravel/issues",
+                "source": "https://github.com/westacks/telebot-laravel/tree/4.0.0"
+            },
+            "time": "2025-04-12T20:34:32+00:00"
         }
     ],
     "packages-dev": [

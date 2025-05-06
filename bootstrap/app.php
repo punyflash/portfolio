@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             \Spatie\Honeypot\ProtectAgainstSpam::class,
         ]);
     })
+    ->withBindings([
+        \Vagebond\Runtype\Actions\ListModelRelations::class => \App\Actions\ListModelRelations::class,
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

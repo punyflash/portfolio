@@ -27,7 +27,7 @@ class BlogController extends Controller
     public function show(BlogPost $post)
     {
         return Inertia::render('Blog/Show', [
-            'post' => fn() => new BlogPostResource($post),
+            'post' => fn() => $post->toResource(),
         ]);
     }
 }

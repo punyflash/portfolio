@@ -4,7 +4,9 @@
     import { _, locale } from 'svelte-i18n'
     import { blur } from 'svelte/transition'
     import { show } from '#/routes/localized/projects/show'
+    import { dayjs } from "@/utils/i18n";
     import MetaData from '@/components/MetaData.svelte';
+    import Callendar from "~icons/cil/calendar";
 
     const { projects }: { projects: Paginated<ProjectResourceType> } = $props()
 </script>
@@ -21,9 +23,38 @@
             {#each projects.data as project (project.id)}
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
                 <a href={show.url({ locale: $locale, project })} use:inertia class="card w-full bg-base-200 shadow-xl hover:scale-105 transition" in:blur>
-                    <div class="card-body">
+                    <div class="card-body gap-2">
                         <h2 class="card-title">{project.title}</h2>
+                        <hr class="text-base-content/30">
+                        {#if project.subtitle}
+                            <h3 class="card-title text-base font-normal">{project.subtitle}</h3>
+                            <hr class="text-base-content/30">
+                        {/if}
+                        {#if project.tags.length}
+                            <div class="flex flex-wrap gap-2">
+                                {#each project.tags as tag}
+                                    <span class="badge px-2 py-1">
+                                        <img src={tag.icon} alt={tag.title} class="h-full" />
+                                        {tag.title}
+                                    </span>
+                                {/each}
+                            </div>
+                            <hr class="text-base-content/30">
+                        {/if}
                         <p>{project.description}</p>
+                        <hr class="text-base-content/30">
+                        <span class="flex items-center justify-between gap-2">
+                            <span class="flex items-center gap-1">
+                                <Callendar class="inline-block" /> {$dayjs(project.started_at).format("MMMM YYYY")}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <Callendar class="inline-block" />
+                                {project.ended_at
+                                    ? $dayjs(project.ended_at).format("MMMM YYYY")
+                                    : $_("Present")
+                                }
+                            </span>
+                        </span>
                     </div>
                 </a>
             {:else}
