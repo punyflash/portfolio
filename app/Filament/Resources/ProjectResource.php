@@ -35,8 +35,8 @@ class ProjectResource extends Resource
                 Forms\Components\Select::make('tags')
                     ->multiple()
                     ->relationship('tags', 'title')
+                    ->searchable()
                     ->getSearchResultsUsing(static fn (string $search) => Tag::search($search)->get()->pluck('title', 'id')->toArray())
-                    ->preload()
                     ->columnSpanFull(),
                 Forms\Components\DateTimePicker::make('started_at'),
                 Forms\Components\DateTimePicker::make('ended_at'),
