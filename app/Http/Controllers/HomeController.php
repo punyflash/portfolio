@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function __invoke()
     {
         return Inertia::render('Home', [
-            'tags' => fn () => Tag::with('icon')->get()->toResourceCollection(),
+            'tags' => fn () => Tag::with('icon')->orderBy('sort')->get()->toResourceCollection(),
         ]);
     }
 }

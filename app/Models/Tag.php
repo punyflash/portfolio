@@ -27,12 +27,6 @@ class Tag extends Model implements HasMedia
         'title',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::addGlobalScope('order', static fn (Builder $builder) => $builder->orderBy('sort'));
-    }
-
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class);

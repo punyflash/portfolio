@@ -56,6 +56,7 @@ class TagResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
+            ->defaultSort('sort')
             ->reorderable('sort');
     }
 
