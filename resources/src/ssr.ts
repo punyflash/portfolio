@@ -21,5 +21,7 @@ createServer(page =>
             return render(App, { props })
         }
     }),
-    import.meta.env.VITE_SSR_PORT,
+    {
+        port: import.meta.env.VITE_SSR_PORT,
+    },
 )
