@@ -6,7 +6,7 @@
     import { _ } from "svelte-i18n";
     import { useForm } from "@inertiajs/svelte";
     import Honeypot, { withHoneypot } from "@/components/Honeypot.svelte";
-    import { store } from "#/routes/contact/store";
+    import { store } from "#/routes/contact";
     import User from "~icons/cil/user";
     import Phone from "~icons/cil/phone";
     import Mail from "~icons/ant-design/mail-outlined";

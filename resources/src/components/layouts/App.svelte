@@ -4,7 +4,7 @@
     import { inertia, page } from "@inertiajs/svelte";
     import ThemeChange from "../ThemeChange.svelte";
     import LocaleChange from "../LocaleChange.svelte";
-    import home from "#/routes/localized/home";
+    import { home } from "#/routes/localized";
     import { index as contact } from "#/routes/localized/contact";
     import { index as projects } from "#/routes/localized/projects";
     import { index as blog } from "#/routes/localized/blog";

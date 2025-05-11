@@ -3,9 +3,7 @@
     import { unsafe } from '@/utils/markdown';
     import { timed } from '@/utils/i18n';
     import { useForm, page, router } from '@inertiajs/svelte';
-    import { update } from '#/routes/localized/comments/update';
-    import { destroy } from '#/routes/localized/comments/destroy';
-    import { store } from '#/routes/localized/comments/store';
+    import { update, destroy, store } from '#/routes/localized/comments';
     import Honey, { withHoneypot, type Honeypot } from './Honeypot.svelte';
     import Pencil from '~icons/cil/pencil';
     import Trash from '~icons/cil/trash';

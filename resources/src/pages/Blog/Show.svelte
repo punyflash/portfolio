@@ -4,7 +4,7 @@
     import MetaData from "@/components/MetaData.svelte";
     import type { BlogPostResourceType, FrontMatter } from "@/types";
     import { safe } from '@/utils/markdown';
-    import { store } from '#/routes/localized/blog/comments/store';
+    import { store } from '#/routes/localized/blog/comments';
 
     const { post, comments }: { post: { data: BlogPostResourceType }, comments: { data: any[]} } = $props();
 

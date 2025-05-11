@@ -3,7 +3,7 @@
     import type { BlogPostResourceType, Paginated } from "@/types";
     import { _, locale } from "svelte-i18n";
     import { blur } from "svelte/transition";
-    import { show } from "#/routes/localized/blog/show";
+    import { show } from "#/routes/localized/blog";
     import { dayjs } from "@/utils/i18n";
     import MetaData from "@/components/MetaData.svelte";
     import Callendar from "~icons/cil/calendar";

@@ -25,7 +25,8 @@
     export const prev = () => goto(slide > 0 ? slide - 1 : max)
     export function goto(index: number) {
         if (index >= 0 && index <= max) {
-            carousel.children[index].scrollIntoView({ behavior: "smooth" })
+            const child = carousel.children[index] as HTMLElement
+            carousel.scrollTo({ left: child.offsetLeft, behavior: "smooth" })
             timer = restProps.loop
         } else {
             throw new Error("Index out of range")
