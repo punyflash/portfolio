@@ -9500,16 +9500,16 @@
         },
         {
             "name": "westacks/telebot",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/westacks/telebot.git",
-                "reference": "11f825710863831a56b211597c31d1572f173fa4"
+                "reference": "d4c2c66e26485a1e4038cd99c7710865c46d3869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/westacks/telebot/zipball/11f825710863831a56b211597c31d1572f173fa4",
-                "reference": "11f825710863831a56b211597c31d1572f173fa4",
+                "url": "https://api.github.com/repos/westacks/telebot/zipball/d4c2c66e26485a1e4038cd99c7710865c46d3869",
+                "reference": "d4c2c66e26485a1e4038cd99c7710865c46d3869",
                 "shasum": ""
             },
             "require": {
@@ -9550,22 +9550,28 @@
             "homepage": "https://github.com/westacks/telebot",
             "support": {
                 "issues": "https://github.com/westacks/telebot/issues",
-                "source": "https://github.com/westacks/telebot/tree/4.0.3"
+                "source": "https://github.com/westacks/telebot/tree/4.0.4"
             },
-            "time": "2025-05-08T12:37:13+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/punyflash",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-05-11T18:55:04+00:00"
         },
         {
             "name": "westacks/telebot-laravel",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/westacks/telebot-laravel.git",
-                "reference": "053efba730718b4d025efb7151140712c689b49b"
+                "reference": "7bebc0e465e5e9af2bddc4fc7417bd425c30e1c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/westacks/telebot-laravel/zipball/053efba730718b4d025efb7151140712c689b49b",
-                "reference": "053efba730718b4d025efb7151140712c689b49b",
+                "url": "https://api.github.com/repos/westacks/telebot-laravel/zipball/7bebc0e465e5e9af2bddc4fc7417bd425c30e1c2",
+                "reference": "7bebc0e465e5e9af2bddc4fc7417bd425c30e1c2",
                 "shasum": ""
             },
             "require": {
@@ -9610,9 +9616,9 @@
             "description": "Telebot adapter for Laravel",
             "support": {
                 "issues": "https://github.com/westacks/telebot-laravel/issues",
-                "source": "https://github.com/westacks/telebot-laravel/tree/4.0.0"
+                "source": "https://github.com/westacks/telebot-laravel/tree/4.1.0"
             },
-            "time": "2025-04-12T20:34:32+00:00"
+            "time": "2025-05-11T19:07:18+00:00"
         }
     ],
     "packages-dev": [
