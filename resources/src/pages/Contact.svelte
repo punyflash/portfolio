@@ -30,7 +30,10 @@
 </script>
 
 <svelte:head>
-    <MetaData title={$_('Contact')} />
+    <MetaData
+        title={$_('Contact')}
+        description={$_('Contact me')}
+    />
 </svelte:head>
 
 <div class="flex-1 flex items-center justify-center p-8">

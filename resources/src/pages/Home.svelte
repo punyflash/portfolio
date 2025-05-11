@@ -31,7 +31,11 @@
 </script>
 
 <svelte:head>
-    <MetaData title={$_('Full Stack Web Developer')} />
+    <MetaData
+        title={$_('Full Stack Web Developer')}
+        description={$_('My personal website')}
+        keywords={tags.data.map(({ title }) => title).join(',')}
+    />
 </svelte:head>
 
 <section class="hero bg-base-100 py-8 flex-1">

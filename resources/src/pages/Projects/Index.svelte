@@ -12,7 +12,10 @@
 </script>
 
 <svelte:head>
-    <MetaData title={$_('Projects')} />
+    <MetaData
+        title={$_('Projects')}
+        description={$_('Projects')}
+    />
 </svelte:head>
 
 <div class="flex-1 p-8 flex flex-col items-center">
