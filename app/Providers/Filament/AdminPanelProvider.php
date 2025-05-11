@@ -57,7 +57,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \Filament\SpatieLaravelTranslatablePlugin::make()
-                    ->defaultLocales(Locales::installed()->pluck('code')->all())
+                    ->defaultLocales(Locales::installed()->pluck('code')->all()),
             ]);
     }
 }

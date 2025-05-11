@@ -26,7 +26,7 @@ class HandleInertiaRequests extends Middleware
                 'error' => $request->session()->get('error'),
                 'warning' => $request->session()->get('warning'),
                 'info' => $request->session()->get('info'),
-            ])->filter()
+            ])->filter(),
         ];
     }
 
@@ -51,14 +51,14 @@ class HandleInertiaRequests extends Middleware
         $route = $request->route()->getName();
 
         if (! str_starts_with($route, config('localization.routes.name_prefix'))) {
-            $route = config('localization.routes.name_prefix') . $route;
+            $route = config('localization.routes.name_prefix').$route;
         }
 
         return Locales::installed()
             ->mapWithKeys(static fn ($locale) => [
                 $locale->code => route($route, [
                     ...$request->route()->parameters(),
-                    'locale' => $locale->code
+                    'locale' => $locale->code,
                 ]),
             ])
             ->all();

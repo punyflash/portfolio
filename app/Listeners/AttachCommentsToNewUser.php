@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Models\Comment;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class AttachCommentsToNewUser
 {

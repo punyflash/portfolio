@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\BlogPostResource;
 use App\Models\BlogPost;
 use App\Models\Comment;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -15,7 +13,7 @@ class BlogController extends Controller
     {
         return Inertia::render('Blog/Index', [
             'posts' => Inertia::deepMerge(
-                fn() => BlogPostResource::collection(
+                fn () => BlogPostResource::collection(
                     BlogPost::where('published_at', '<=', now())
                         ->with('banner')
                         ->orderBy('published_at', 'desc')
@@ -29,7 +27,7 @@ class BlogController extends Controller
     public function show(BlogPost $post)
     {
         return Inertia::render('Blog/Show', [
-            'post' => fn() => $post->toResource(),
+            'post' => fn () => $post->toResource(),
             'comments' => fn () => Comment::treeOf(
                 fn ($q) => $q->whereNull('parent_id')
                     ->where('commentable_id', $post->id)

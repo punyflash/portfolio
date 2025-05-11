@@ -9,8 +9,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditBlogPost extends EditRecord
 {
-    use EditRecord\Concerns\Translatable,
-        CleansUpUnusedMedia;
+    use CleansUpUnusedMedia,
+        EditRecord\Concerns\Translatable;
 
     protected static string $resource = BlogPostResource::class;
 

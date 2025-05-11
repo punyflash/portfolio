@@ -3,22 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
-use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Project;
 use App\Models\Tag;
-use DB;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Support\Services\RelationshipJoiner;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProjectResource extends Resource
 {
@@ -40,7 +32,7 @@ class ProjectResource extends Resource
                     ->relationship('tags', 'title')
                     ->getSearchResultsUsing(static fn (string $search): array => Tag::query()
                         ->select(['id', 'title'])
-                        ->whereRaw('EXISTS (SELECT 1 FROM json_each_text(title) AS jt(key, value) WHERE value ILIKE \'%' . $search . '%\')')
+                        ->whereRaw('EXISTS (SELECT 1 FROM json_each_text(title) AS jt(key, value) WHERE value ILIKE \'%'.$search.'%\')')
                         ->get()
                         ->pluck('title', 'id')
                         ->all()

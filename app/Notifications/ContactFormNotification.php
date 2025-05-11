@@ -32,7 +32,7 @@ class ContactFormNotification extends Notification
 
     public function toTelegram(AnonymousNotifiable $notifiable): string
     {
-        return new TelegramNotification()
+        return (new TelegramNotification)
             ->sendMessage([
                 'chat_id' => $notifiable->routeNotificationFor('telegram'),
                 'text' => view('telegram.contact-form', $this->data)->render(),

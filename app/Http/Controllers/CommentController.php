@@ -21,7 +21,7 @@ class CommentController extends Controller
 
         $data = $request->validate([
             'content' => ['required', 'string'],
-            'name' => [Rule::requiredIf(!$name = $request->user()?->name), 'string'],
+            'name' => [Rule::requiredIf(! $name = $request->user()?->name), 'string'],
         ]);
 
         $comment = $relation->create([
@@ -33,14 +33,14 @@ class CommentController extends Controller
         ]);
 
         return redirect()->back()->with('success', trans('Comment created successfully!'))
-            ->with('hash', 'comment-' . $comment->id);
+            ->with('hash', 'comment-'.$comment->id);
     }
 
     public function update(Request $request, Comment $comment)
     {
         $data = $request->validate([
             'content' => ['required', 'string'],
-            'name' => [Rule::requiredIf(!$name = $request->user()?->name), 'string'],
+            'name' => [Rule::requiredIf(! $name = $request->user()?->name), 'string'],
         ]);
 
         $comment->update([
@@ -49,7 +49,7 @@ class CommentController extends Controller
         ]);
 
         return redirect()->back()->with('success', trans('Comment updated successfully!'))
-            ->with('hash', 'comment-' . $comment->id);
+            ->with('hash', 'comment-'.$comment->id);
     }
 
     public function destroy(Comment $comment)

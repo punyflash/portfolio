@@ -16,8 +16,8 @@ class BlogPost extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\BlogPostFactory> */
     use HasFactory,
-        HasTranslations,
         HasSlug,
+        HasTranslations,
         InteractsWithMedia;
 
     protected $fillable = [
