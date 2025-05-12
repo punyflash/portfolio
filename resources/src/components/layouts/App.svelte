@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fly } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
     import { _, locale } from "svelte-i18n";
     import { inertia, page } from "@inertiajs/svelte";
     import ThemeChange from "../ThemeChange.svelte";
@@ -93,7 +93,11 @@
         <LocaleChange />
     </header>
 
-    {@render children()}
+    {#key $page.component}
+        <div class="flex-1 flex flex-col" in:fade>
+            {@render children()}
+        </div>
+    {/key}
 
     <footer class="footer p-6 bg-base-300 text-base-content">
         <div class="items-center grid-flow-row justify-center lg:grid-flow-col lg:justify-between w-full text-xs sm:text-sm">
