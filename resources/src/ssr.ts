@@ -1,27 +1,14 @@
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/svelte'
-import createServer from '@inertiajs/svelte/server'
+import { createVortexServer } from '@westacks/vortex/server'
 import { render } from 'svelte/server'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { resolve } from './resolve'
+import App from './SSR.svelte'
 import { prepareTranslation } from './utils/i18n'
-import Layout from './components/layouts/App.svelte'
 
-createServer(page =>
-    createInertiaApp({
-        page,
-        async resolve(name) {
-            const component = await resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob<ResolvedComponent>('./pages/**/*.svelte'))
-            // @ts-ignore
-            return {default: component.default, layout: component.layout || Layout} as ResolvedComponent
-        },
-        setup: ({ App, props }) => {
-            const locale = props.initialPage.props.locale as { default: string, fallback: string }
+createVortexServer(async (page) => {
+    const locale = page.props.locale as { current: string, fallback: string }
+    prepareTranslation(locale.fallback, locale.current)
 
-            prepareTranslation(locale.fallback, locale.default)
+    const { body, head } = render(App, { props: { page, ...await resolve(page) }})
 
-            return render(App, { props })
-        }
-    }),
-    {
-        port: import.meta.env.VITE_SSR_PORT,
-    },
-)
+    return { body, head: [head] }
+})

@@ -1,10 +1,6 @@
-<script lang="ts" module>
-    export { default as layout } from "../components/layouts/App.svelte";
-</script>
-
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { useForm } from "@inertiajs/svelte";
+    import { useForm } from "@/utils/inertia";
     import Honeypot, { withHoneypot } from "@/components/Honeypot.svelte";
     import { store } from "#/routes/contact";
     import User from "~icons/cil/user";

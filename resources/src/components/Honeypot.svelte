@@ -19,10 +19,9 @@
 </script>
 
 <script lang="ts">
-    import type { Writable } from 'svelte/store';
-    import type { InertiaForm } from '@inertiajs/svelte';
+    import { useForm } from '@/utils/inertia';
 
-    const { honeypot, form }: { honeypot: Honeypot; form: Writable<InertiaForm<any>> } = $props();
+    const { honeypot, form }: { honeypot: Honeypot; form: ReturnType<typeof useForm>} = $props();
 </script>
 
 {#if honeypot?.enabled}

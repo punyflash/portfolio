@@ -1,5 +1,5 @@
 import { addMessages, init, locale } from 'svelte-i18n';
-import { page } from "@inertiajs/svelte";
+import { subscribe } from "@westacks/vortex";
 import { get, readable, writable } from 'svelte/store';
 import en from '../../lang/en.json';
 import ru from '../../lang/ru.json';
@@ -25,7 +25,7 @@ export function prepareTranslation(fallbackLocale: string, initialLocale: string
     addMessages('ru', ru);
     addMessages('uk', uk);
 
-    page.subscribe(page => {
+    const unsubscribe = subscribe(page => {
         if (!page?.props?.locale) {
             return
         }
@@ -38,7 +38,9 @@ export function prepareTranslation(fallbackLocale: string, initialLocale: string
         dayjs.set(day)
     })
 
-    return init({ fallbackLocale, initialLocale });
+    init({ fallbackLocale, initialLocale });
+
+    return unsubscribe
 }
 
 export function localized(route: Function) {

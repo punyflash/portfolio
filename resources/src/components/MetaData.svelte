@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
     import type { FrontMatter } from "@/types/blog";
-    import { page } from "@inertiajs/svelte";
+    import { page } from "@/utils/inertia";
 
     const canonical = $derived($page?.props?.locale && ($page.props.locale as any).canonical)
     const { title = null, ...tags }: FrontMatter = $props();

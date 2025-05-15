@@ -1,7 +1,5 @@
 <script lang="ts" generics="T = unknown">
     import type { Snippet } from 'svelte'
-    import SolidCircle from '~icons/fa6-solid/circle'
-    import OutlineCircle from '~icons/fa6-regular/circle'
 
     type Carousel<T> = {
         items: T[],

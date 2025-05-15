@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { page, inertia } from '@inertiajs/svelte'
+    import { link } from '@westacks/vortex'
     import { locale } from 'svelte-i18n'
+    import { page } from '@/utils/inertia';
     import Globe from '~icons/cil/globe-alt'
 
     let dropdown: HTMLDetailsElement = $state()
@@ -16,7 +17,7 @@
         <ul role="menu" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 p-2 shadow-sm">
             {#each Object.entries(($page.props.locale as any).translations as Record<string, string>) as [key, url]}
                 <li>
-                    <a href={url} use:inertia={{preserveState: true}} class="btn btn-sm btn-ghost w-full uppercase">
+                    <a href={url} use:link={{ vortex: { preserveScroll: true }}} class="btn btn-sm btn-ghost w-full uppercase">
                         {key}
                     </a>
                 </li>

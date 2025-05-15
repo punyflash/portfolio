@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { inertia, WhenVisible } from '@inertiajs/svelte'
+    import { link } from '@westacks/vortex';
     import type { ProjectResourceType, Paginated } from '@/types';
     import { _, locale } from 'svelte-i18n'
     import { blur } from 'svelte/transition'
@@ -7,6 +7,7 @@
     import { dayjs } from "@/utils/i18n";
     import MetaData from '@/components/MetaData.svelte';
     import Callendar from "~icons/cil/calendar";
+    import WhenVisible from '@/components/WhenVisible.svelte';
 
     const { projects }: { projects: Paginated<ProjectResourceType> } = $props()
 </script>
@@ -25,7 +26,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {#each projects.data as project (project.id)}
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-                <a href={show.url({ locale: $locale, project })} use:inertia class="card w-full bg-base-200 shadow-xl hover:scale-105 transition" in:blur>
+                <a href={show.url({ locale: $locale, project })} use:link class="card w-full bg-base-200 shadow-xl hover:scale-105 transition" in:blur>
                     <div class="card-body gap-2">
                         <h2 class="card-title">{project.title}</h2>
                         <hr class="text-base-content/30">

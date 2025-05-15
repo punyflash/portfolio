@@ -8,18 +8,6 @@
 
     let carousel: Carousel = $state()
 
-    // const items = $state([
-    //     { alt: "PHP", src: import("../assets/img/php.svg") },
-    //     { alt: "JavaScript", src: import("../assets/img/javascript.svg") },
-    //     { alt: "TypeScript", src: import("../assets/img/typescript.svg") },
-    //     { alt: "Laravel", src: import("../assets/img/laravel.svg") },
-    //     { alt: "Svelte", src: import("../assets/img/svelte.svg") },
-    //     { alt: "Vue", src: import("../assets/img/vue.svg") },
-    //     { alt: "Livewire", src: import("../assets/img/livewire.svg") },
-    //     { alt: "Tailwind", src: import("../assets/img/tailwind.svg") },
-    //     { alt: "Docker", src: import("../assets/img/docker.svg") },
-    // ])
-
     const socials = $state([
         { icon: import("~icons/cib/github"), url: "https://github.com/punyflash" },
         { icon: import("~icons/cib/linkedin"), url: "https://linkedin.com/in/punyflash" },

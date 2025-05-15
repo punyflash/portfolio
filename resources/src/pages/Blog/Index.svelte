@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { inertia, WhenVisible } from "@inertiajs/svelte";
+    import { link } from "@westacks/vortex";
     import type { BlogPostResourceType, Paginated } from "@/types";
     import { _, locale } from "svelte-i18n";
     import { blur } from "svelte/transition";
@@ -7,6 +7,7 @@
     import { dayjs } from "@/utils/i18n";
     import MetaData from "@/components/MetaData.svelte";
     import Callendar from "~icons/cil/calendar";
+    import WhenVisible from "@/components/WhenVisible.svelte";
 
     const { posts }: { posts: Paginated<BlogPostResourceType> } = $props();
 </script>
@@ -27,7 +28,7 @@
                 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
                 <a
                     href={show.url({ locale: $locale, post })}
-                    use:inertia
+                    use:link
                     class="card w-full bg-base-200 shadow-xl hover:scale-105 transition"
                     in:blur
                 >

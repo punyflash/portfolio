@@ -1,15 +1,12 @@
 <script lang="ts">
     import { fade, fly } from "svelte/transition";
     import { _, locale } from "svelte-i18n";
-    import { inertia, page } from "@inertiajs/svelte";
-    import ThemeChange from "../ThemeChange.svelte";
-    import LocaleChange from "../LocaleChange.svelte";
-    import { home } from "#/routes/localized";
-    import { index as contact } from "#/routes/localized/contact";
-    import { index as projects } from "#/routes/localized/projects";
-    import { index as blog } from "#/routes/localized/blog";
+    import { link, subscribe } from "@westacks/vortex";
+    import { onDestroy } from "svelte";
+    import ThemeChange from "./components/ThemeChange.svelte";
+    import LocaleChange from "./components/LocaleChange.svelte";
     import ChevronDown from "~icons/cil/chevron-bottom";
-    import Logo from "../Logo.svelte";
+    import Logo from "./components/Logo.svelte";
 
     type Toast = {
         id: number;
@@ -19,7 +16,7 @@
 
     let toasts: Toast[] = $state([]);
 
-    page.subscribe(page => {
+    const unsubscribe = subscribe(page => {
         const flash = Object.entries(page.props.flash || {});
 
         for (const [key, message] of flash) {
@@ -39,9 +36,11 @@
         }
     })
 
-    const { children } = $props();
+    let { component, props } = $props()
 
     let dropdown: HTMLDetailsElement = $state();
+
+    onDestroy(unsubscribe);
 </script>
 
 <svelte:window on:click={() => dropdown.open = false} />
@@ -49,17 +48,17 @@
 {#snippet links()}
     {#key $locale}
         <li>
-            <a href={blog.url({ locale: $locale })} use:inertia>
+            <a href={`/${$locale}/blog`} use:link>
                 {$_("Blog")}
             </a>
         </li>
         <li>
-            <a href={projects.url({ locale: $locale })} use:inertia>
+            <a href={`/${$locale}/projects`} use:link>
                 {$_("Projects")}
             </a>
         </li>
         <li>
-            <a href={contact.url({ locale: $locale })} use:inertia>
+            <a href={`/${$locale}/contact`} use:link>
                 {$_("Contact")}
             </a>
         </li>
@@ -72,8 +71,8 @@
             {#key $locale}
                 <a
                     class="btn btn-square btn-ghost text-xl"
-                    href={home.url({ locale: $locale })}
-                    use:inertia><Logo class="h-full" /></a
+                    href={`/${$locale}`}
+                    use:link><Logo class="h-full" /></a
                 >
             {/key}
         </div>
@@ -93,9 +92,9 @@
         <LocaleChange />
     </header>
 
-    {#key $page.component}
+    {#key component}
         <div class="flex-1 flex flex-col" in:fade>
-            {@render children()}
+            <component.default {...props}></component.default>
         </div>
     {/key}
 

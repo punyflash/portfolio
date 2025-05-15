@@ -2,7 +2,8 @@
     import { locale, _ } from 'svelte-i18n';
     import { unsafe } from '@/utils/markdown';
     import { timed } from '@/utils/i18n';
-    import { useForm, page, router } from '@inertiajs/svelte';
+    import { useForm, page } from '@/utils/inertia';
+    import { axios } from '@westacks/vortex';
     import { update, destroy, store } from '#/routes/localized/comments';
     import Honey, { withHoneypot, type Honeypot } from './Honeypot.svelte';
     import Pencil from '~icons/cil/pencil';
@@ -24,19 +25,17 @@
 
     function onsubmit(e: SubmitEvent) {
         e.preventDefault();
-        $form.submit(update({ locale: $locale, comment }), {
-            preserveScroll: true,
-            onSuccess: () => edit = false,
-        });
+        $form.submit({
+            ...update({ locale: $locale, comment }),
+            vortex: { preserveScroll: true },
+        }).then(() => edit = false);
     }
 
     function deleteComment(comment) {
-        const { url, method } = destroy({ locale: $locale, comment })
-        router.visit(url, {
-            method,
-            preserveScroll: true,
-            onSuccess: () => deleteDialog?.close(),
-        })
+        axios.request({
+            ...destroy({ locale: $locale, comment }),
+            vortex: { preserveScroll: true },
+        }).then(() => deleteDialog?.close());
     }
 </script>
 

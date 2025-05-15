@@ -3091,16 +3091,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.13.0",
+            "version": "v12.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "52b588bcd8efc6d01bc1493d2d67848f8065f269"
+                "reference": "84b142958d1638a7e89de94ce75c2821c601d3d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/52b588bcd8efc6d01bc1493d2d67848f8065f269",
-                "reference": "52b588bcd8efc6d01bc1493d2d67848f8065f269",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/84b142958d1638a7e89de94ce75c2821c601d3d7",
+                "reference": "84b142958d1638a7e89de94ce75c2821c601d3d7",
                 "shasum": ""
             },
             "require": {
@@ -3302,7 +3302,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-05-07T17:29:01+00:00"
+            "time": "2025-05-13T17:50:51+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -9500,16 +9500,16 @@
         },
         {
             "name": "westacks/telebot",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/westacks/telebot.git",
-                "reference": "d4c2c66e26485a1e4038cd99c7710865c46d3869"
+                "reference": "0f5651cc4e17f6009531e3190e74178fd416d8ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/westacks/telebot/zipball/d4c2c66e26485a1e4038cd99c7710865c46d3869",
-                "reference": "d4c2c66e26485a1e4038cd99c7710865c46d3869",
+                "url": "https://api.github.com/repos/westacks/telebot/zipball/0f5651cc4e17f6009531e3190e74178fd416d8ee",
+                "reference": "0f5651cc4e17f6009531e3190e74178fd416d8ee",
                 "shasum": ""
             },
             "require": {
@@ -9550,7 +9550,7 @@
             "homepage": "https://github.com/westacks/telebot",
             "support": {
                 "issues": "https://github.com/westacks/telebot/issues",
-                "source": "https://github.com/westacks/telebot/tree/4.0.4"
+                "source": "https://github.com/westacks/telebot/tree/4.0.5"
             },
             "funding": [
                 {
@@ -9558,7 +9558,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-11T18:55:04+00:00"
+            "time": "2025-05-12T21:28:46+00:00"
         },
         {
             "name": "westacks/telebot-laravel",
@@ -11109,16 +11109,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.42.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "2edaaf77f3c07a4099965bb3d7dfee16e801c0f6"
+                "reference": "71a509b14b2621ce58574274a74290f933c687f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/2edaaf77f3c07a4099965bb3d7dfee16e801c0f6",
-                "reference": "2edaaf77f3c07a4099965bb3d7dfee16e801c0f6",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/71a509b14b2621ce58574274a74290f933c687f7",
+                "reference": "71a509b14b2621ce58574274a74290f933c687f7",
                 "shasum": ""
             },
             "require": {
@@ -11168,7 +11168,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2025-04-29T14:26:46+00:00"
+            "time": "2025-05-13T13:34:34+00:00"
         },
         {
             "name": "mockery/mockery",

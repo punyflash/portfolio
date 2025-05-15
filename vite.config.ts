@@ -11,13 +11,14 @@ import path from 'node:path';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/src/app.ts'],
+            input: ['resources/src/app.svelte.ts'],
             ssr: ['resources/src/ssr.ts'],
             refresh: true,
         }),
         run([
             {
                 name: 'wayfinder',
+                build: false,
                 run: ['php', 'artisan', 'wayfinder:generate', '--path=resources/src/.wayfinder', '--skip-actions'],
                 pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
             },
@@ -42,7 +43,7 @@ export default defineConfig({
     ],
     ssr: {
         external: builtinModules as string[],
-        noExternal: true,
+        noExternal: /\.wayfinder/,
     },
     build: {
         rollupOptions: {
