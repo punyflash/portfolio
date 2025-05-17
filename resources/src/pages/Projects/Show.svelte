@@ -5,21 +5,17 @@
 
     const { project }: { project: { data: ProjectResourceType }} = $props()
 
-    const content = $derived(project?.data?.content && safe(project.data.content))
+    const content = $derived(project?.data?.content && safe.processSync(project.data.content))
 </script>
 
 <svelte:head>
-    {#await content then content}
-        <MetaData {...content.data.meta as FrontMatter} />
-    {/await}
+    <MetaData {...content.data.meta as FrontMatter} />
 </svelte:head>
 
 <div class="flex-1 p-8 flex flex-col items-center">
     <div class="container">
         <article class="prose max-w-none">
-            {#await content then content}
-                {@html content.value}
-            {/await}
+            {@html content.value}
         </article>
     </div>
 </div>

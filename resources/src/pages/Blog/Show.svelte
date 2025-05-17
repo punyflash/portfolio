@@ -8,21 +8,17 @@
 
     const { post, comments }: { post: { data: BlogPostResourceType }, comments: { data: any[]} } = $props();
 
-    const content = $derived(post?.data?.content && safe(post.data.content))
+    const content = $derived(post?.data?.content && safe.processSync(post.data.content))
 </script>
 
 <svelte:head>
-    {#await content then content}
-        <MetaData {...content.data.meta as FrontMatter} />
-    {/await}
+    <MetaData {...content.data.meta as FrontMatter} />
 </svelte:head>
 
 <div class="flex-1 p-8 flex flex-col items-center">
     <div class="container">
         <article class="prose max-w-none">
-            {#await content then content}
-                    {@html content.value}
-            {/await}
+            {@html content.value}
         </article>
 
         <div class="divider"></div>

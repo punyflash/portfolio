@@ -11,4 +11,4 @@ createVortexServer(async (page) => {
     const { body, head } = render(App, { props: { page, ...await resolve(page) }})
 
     return { body, head: [head] }
-})
+}, import.meta.env.VITE_SSR_PORT)

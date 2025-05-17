@@ -1,12 +1,12 @@
-import "./app.css";
-import { createVortex, install, subscribe } from '@westacks/vortex';
+import "@/css/app.css"
+import { createVortex, install, subscribe } from '@westacks/vortex'
 import inertia from '@westacks/vortex/inertia'
 import bprogress from '@westacks/vortex/bprogress'
-import { resolve } from './resolve';
+import { resolve } from '@/resolve'
 import { mount, hydrate } from 'svelte'
-import themeChange from "./utils/theme";
-import { prepareTranslation } from "./utils/i18n";
-import App from "./App.svelte";
+import themeChange from "@/utils/theme"
+import { prepareTranslation } from "@/utils/i18n"
+import App from "@/App.svelte"
 
 themeChange()
 

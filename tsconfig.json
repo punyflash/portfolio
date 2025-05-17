@@ -11,6 +11,7 @@
         "checkJs": true,
         "strict": false,
         "noEmit": true,
+        "skipLibCheck": true,
         "lib": ["ESNext", "DOM", "WebWorker"],
         "types": ["vite/client", "unplugin-icons/types/svelte"],
         "paths": {

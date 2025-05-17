@@ -16,7 +16,7 @@
     let edit = $state(false)
     let deleteDialog: HTMLDialogElement = $state()
     let replyDialog: CommentForm = $state()
-    let content = $derived(comment.content && unsafe(comment.content))
+    let content = $derived(comment.content && unsafe.processSync(comment.content))
 
     const form = useForm(withHoneypot($page.props.honeypot as Honeypot, {
         content: comment.content,
@@ -90,9 +90,7 @@
                 </form>
             {:else}
                 <div class="prose max-w-none prose-sm">
-                    {#await content then content}
-                        {@html content.value}
-                    {/await}
+                    {@html content.value}
                 </div>
             {/if}
         </div>

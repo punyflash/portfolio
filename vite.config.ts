@@ -53,8 +53,10 @@ export default defineConfig({
                         return 'assets';
                     }
 
-                    if (id.includes('starry-night')) {
-                        return 'starry-night';
+                    for (const lib of ['rehype', 'remark', 'prism', 'katex']) {
+                        if (id.includes(lib)) {
+                            return lib;
+                        }
                     }
                 }
             }
