@@ -65,7 +65,7 @@
     {/key}
 {/snippet}
 
-<main class="min-h-screen bg-base-100 text-base-content flex flex-col">
+<main class="min-h-dvh bg-base-100 text-base-content flex flex-col">
     <header class="navbar bg-base-200 shadow-md px-6">
         <div class="flex-1">
             {#key $locale}
