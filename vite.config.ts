@@ -43,7 +43,7 @@ export default defineConfig({
     ],
     ssr: {
         external: builtinModules as string[],
-        noExternal: /\.wayfinder/,
+        noExternal: true,
     },
     build: {
         rollupOptions: {
