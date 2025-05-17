@@ -112,7 +112,7 @@
 
 {#if toasts.length}
     <div class="toast toast-top toast-end" role="alert" in:fly={{ x: 100 }} out:fly={{ x: 100 }}>
-        {#each toasts as toast, i (toast.message)}
+        {#each toasts as toast, i}
             <button type="button" onclick={() => toasts.splice(i, 1)} class="alert cursor-pointer {toast.class}" in:fly={{ x: 100 }} out:fly={{ x: 100 }}>
                 <span>{toast.message}</span>
             </button>

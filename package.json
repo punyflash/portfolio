@@ -6,14 +6,14 @@
         "dev": "vite"
     },
     "devDependencies": {
-        "@iconify-json/octicon": "^1.2.5",
-        "@iconify/json": "^2.2.338",
+        "@iconify-json/octicon": "^1.2.6",
+        "@iconify/json": "^2.2.339",
         "@sveltejs/vite-plugin-svelte": "^5.0.3",
         "@tailwindcss/typography": "^0.5.16",
         "@tailwindcss/vite": "^4.1.7",
         "@tsconfig/svelte": "^5.0.4",
         "@types/node": "^22.15.18",
-        "@westacks/vortex": "^0.0.9",
+        "@westacks/vortex": "^0.0.11",
         "axios": "^1.9.0",
         "concurrently": "^9.1.2",
         "daisyui": "^5.0.35",
