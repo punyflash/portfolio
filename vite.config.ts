@@ -51,6 +51,10 @@ export default defineConfig({
                     if (id.startsWith('~icons') || id.endsWith('.svg')) {
                         return 'assets';
                     }
+
+                    if (id.includes('starry-night')) {
+                        return 'starry-night';
+                    }
                 }
             }
         }

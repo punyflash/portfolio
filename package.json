@@ -21,6 +21,7 @@
         "globals": "^16.1.0",
         "js-yaml": "^4.1.0",
         "laravel-vite-plugin": "^1.2.0",
+        "rehype-starry-night": "^2.2.0",
         "rehype-stringify": "^10.0.1",
         "remark-frontmatter": "^5.0.0",
         "remark-gfm": "^4.0.1",

@@ -9,13 +9,17 @@
 </script>
 
 <svelte:head>
-    <MetaData {...content.data.meta as FrontMatter} />
+    {#await content then content}
+        <MetaData {...content.data.meta as FrontMatter} />
+    {/await}
 </svelte:head>
 
 <div class="flex-1 p-8 flex flex-col items-center">
     <div class="container">
         <article class="prose max-w-none">
-            {@html content.value}
+            {#await content then content}
+                {@html content.value}
+            {/await}
         </article>
     </div>
 </div>
