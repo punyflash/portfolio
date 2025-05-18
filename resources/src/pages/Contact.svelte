@@ -1,6 +1,6 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { useForm } from "@/utils/inertia";
+    import { useForm, page } from "@/utils/inertia";
     import Honeypot, { withHoneypot } from "@/components/Honeypot.svelte";
     import { store } from "#/routes/contact";
     import User from "~icons/cil/user";
@@ -38,7 +38,8 @@
             <h1 class="text-5xl font-bold">{$_("Contact")}</h1>
         </div>
         <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
-            <form class="card-body gap-2 items-center" {onsubmit}>
+            <form method="POST" action={store.url()} class="card-body gap-2 items-center" {onsubmit}>
+                <input type="hidden" name="_token" value={$page.props.csrf} />
                 <Honeypot {honeypot} {form} />
 
                 <label

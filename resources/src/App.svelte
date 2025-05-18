@@ -1,8 +1,9 @@
 <script lang="ts">
     import { fade, fly } from "svelte/transition";
     import { _, locale } from "svelte-i18n";
-    import { link, subscribe } from "@westacks/vortex";
+    import { link, subscribe, getPage, type Page } from "@westacks/vortex";
     import { onDestroy } from "svelte";
+    import { page } from "./utils/inertia";
     import ThemeChange from "./components/ThemeChange.svelte";
     import LocaleChange from "./components/LocaleChange.svelte";
     import ChevronDown from "~icons/cil/chevron-bottom";
@@ -14,10 +15,23 @@
         message: string;
     }
 
-    let toasts: Toast[] = $state([]);
+    const initial = createToasts(getPage().props.flash)
+
+    let { component, props } = $props()
+    let dropdown: HTMLDetailsElement = $state();
+    let toasts: Toast[] = $state(initial);
 
     const unsubscribe = subscribe(page => {
-        const flash = Object.entries(page.props.flash || {});
+        const incoming = createToasts(page.props.flash);
+        toasts = [...toasts, ...incoming];
+        removeToasts(incoming);
+    })
+
+    removeToasts(initial);
+
+    function createToasts(flash) {
+        let toasts = []
+        flash = Object.entries(flash || {});
 
         for (const [key, message] of flash) {
             const id = performance.now()
@@ -31,17 +45,23 @@
             };
 
             toasts.push(data);
-
-            setTimeout(() => toasts = toasts.filter(t => t.id !== id), 4000);
         }
-    })
 
-    let { component, props } = $props()
+        return toasts
+    }
 
-    let dropdown: HTMLDetailsElement = $state();
+    function removeToasts(toastsToHide) {
+        toastsToHide = toastsToHide.map(t => t.id);
+
+        setTimeout(() => toasts = toasts.filter(t => !toastsToHide.includes(t.id)), 4000);
+    }
 
     onDestroy(unsubscribe);
 </script>
+
+<svelte:head>
+    <meta name="csrf-token" content={$page.props.csrf as string} />
+</svelte:head>
 
 <svelte:window on:click={() => dropdown.open = false} />
 

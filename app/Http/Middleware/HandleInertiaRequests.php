@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Inertia\Middleware;
 use LaravelLang\Locales\Facades\Locales;
 use Spatie\Honeypot\Honeypot;
@@ -13,6 +14,7 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
+            'csrf' => Inertia::always(csrf_token()),
             'locale' => fn () => [
                 'current' => app()->getLocale(),
                 'fallback' => app()->getFallbackLocale(),
