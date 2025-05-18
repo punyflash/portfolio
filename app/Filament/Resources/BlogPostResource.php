@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogPostResource\Pages;
+use App\Filament\Resources\BlogPostResource\Pages\CreateBlogPost;
 use App\Models\BlogPost;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -33,13 +34,8 @@ class BlogPostResource extends Resource
                 Forms\Components\DateTimePicker::make('published_at'),
                 Forms\Components\MarkdownEditor::make('content')
                     ->columnSpanFull()
-                    ->saveUploadedFileAttachmentsUsing(static fn ($record, $file) => tap(
-                        $record->addMedia($file)
-                            ->usingFileName($file->getClientOriginalName())
-                            ->toMediaCollection('content', 'public'),
-                        fn () => $file->delete(),
-                    ))
-                    ->getUploadedAttachmentUrlUsing(static fn ($file) => $file->getUrl()),
+                    ->saveUploadedFileAttachmentsUsing(CreateBlogPost::createMedia(...))
+                    ->getUploadedAttachmentUrlUsing(static fn ($file) => $file),
             ]);
     }
 

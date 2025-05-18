@@ -3,13 +3,13 @@
 namespace App\Filament\Resources\ProjectResource\Pages;
 
 use App\Filament\Resources\ProjectResource;
-use App\Filament\Traits\CleansUpUnusedMedia;
+use App\Filament\Traits\HasFileContents;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditProject extends EditRecord
 {
-    use CleansUpUnusedMedia,
+    use HasFileContents,
         EditRecord\Concerns\Translatable;
 
     protected static string $resource = ProjectResource::class;

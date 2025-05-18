@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
+use App\Filament\Resources\ProjectResource\Pages\CreateProject;
 use App\Models\Project;
 use App\Models\Tag;
 use Filament\Forms;
@@ -44,13 +45,8 @@ class ProjectResource extends Resource
                 Forms\Components\DateTimePicker::make('ended_at'),
                 Forms\Components\MarkdownEditor::make('content')
                     ->columnSpanFull()
-                    ->saveUploadedFileAttachmentsUsing(static fn ($record, $file) => tap(
-                        $record->addMedia($file)
-                            ->usingFileName($file->getClientOriginalName())
-                            ->toMediaCollection('content', 'public'),
-                        fn () => $file->delete(),
-                    ))
-                    ->getUploadedAttachmentUrlUsing(static fn ($file) => $file->getUrl()),
+                    ->saveUploadedFileAttachmentsUsing(CreateProject::createMedia(...))
+                    ->getUploadedAttachmentUrlUsing(static fn ($file) => $file),
             ]);
     }
 
