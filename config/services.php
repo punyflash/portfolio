@@ -40,8 +40,9 @@ return [
         'telegram' => env('CONTACT_TELEGRAM'),
     ],
 
-    'gtag' => [
-        'id' => env('GTAG_ID'),
+    'google' => [
+        'gtag' => env('GTAG_ID'),
+        'addsense' => env('ADDSENSE_ID'),
     ],
 
 ];
