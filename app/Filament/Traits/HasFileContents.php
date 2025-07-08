@@ -3,11 +3,9 @@
 namespace App\Filament\Traits;
 
 use Filament\Resources\Pages\Page;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \Filament\Resources\Pages\EditRecord */
 trait HasFileContents

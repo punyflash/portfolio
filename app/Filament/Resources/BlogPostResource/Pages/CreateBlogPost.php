@@ -9,8 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateBlogPost extends CreateRecord
 {
-    use HasFileContents,
-        CreateRecord\Concerns\Translatable;
+    use CreateRecord\Concerns\Translatable,
+        HasFileContents;
 
     protected static string $resource = BlogPostResource::class;
 

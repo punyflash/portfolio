@@ -8,6 +8,9 @@
     import LocaleChange from "./components/LocaleChange.svelte";
     import ChevronDown from "~icons/cil/chevron-bottom";
     import Logo from "./components/Logo.svelte";
+    import { index as blog } from "#/routes/localized/blog";
+    import { index as projects } from "#/routes/localized/projects";
+    import { index as contact } from "#/routes/localized/contact";
 
     type Toast = {
         id: number;
@@ -68,17 +71,17 @@
 {#snippet links()}
     {#key $locale}
         <li>
-            <a href={`/${$locale}/blog`} use:link>
+            <a href={blog.url({ locale: $locale })} use:link>
                 {$_("Blog")}
             </a>
         </li>
         <li>
-            <a href={`/${$locale}/projects`} use:link>
+            <a href={projects.url({ locale: $locale })} use:link>
                 {$_("Projects")}
             </a>
         </li>
         <li>
-            <a href={`/${$locale}/contact`} use:link>
+            <a href={contact.url({ locale: $locale })} use:link>
                 {$_("Contact")}
             </a>
         </li>

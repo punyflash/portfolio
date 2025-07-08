@@ -9,8 +9,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditProject extends EditRecord
 {
-    use HasFileContents,
-        EditRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable,
+        HasFileContents;
 
     protected static string $resource = ProjectResource::class;
 
