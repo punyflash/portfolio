@@ -3,7 +3,7 @@
     import { _, locale } from "svelte-i18n";
     import { link, subscribe, getPage, type Page } from "@westacks/vortex";
     import { onDestroy } from "svelte";
-    import { page } from "./utils/inertia";
+    import { page } from "@westacks/vortex/svelte";
     import ThemeChange from "./components/ThemeChange.svelte";
     import LocaleChange from "./components/LocaleChange.svelte";
     import ChevronDown from "~icons/cil/chevron-bottom";

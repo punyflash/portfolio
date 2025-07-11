@@ -1,7 +1,7 @@
 <script lang="ts">
     import { link } from '@westacks/vortex'
     import { locale } from 'svelte-i18n'
-    import { page } from '@/utils/inertia';
+    import { page } from '@westacks/vortex/svelte';
     import Globe from '~icons/cil/globe-alt'
 
     let dropdown: HTMLDetailsElement = $state()

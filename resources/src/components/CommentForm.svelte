@@ -1,6 +1,6 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { useForm, page } from "@/utils/inertia";
+    import { useForm, page } from "@westacks/vortex/svelte";
     import Honey, { withHoneypot, type Honeypot } from './Honeypot.svelte';
 
     type Submit = {
@@ -22,7 +22,7 @@
     function onsubmit(e: SubmitEvent) {
         e.preventDefault();
 
-        $form.submit({ ...submit, vortex: { preserveScroll: true }})
+        $form.request({ ...submit, vortex: { preserveScroll: true }})
             .then(() => toggle(false));
     }
 </script>

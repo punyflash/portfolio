@@ -7,7 +7,7 @@
         validFromFieldName: string
     }
 
-    export function withHoneypot(honeypot: Honeypot, data: Record<string, any>) {
+    export function withHoneypot<T>(honeypot: Honeypot, data: T): T {
         if (!honeypot?.enabled) return data
 
         return {
@@ -19,7 +19,7 @@
 </script>
 
 <script lang="ts">
-    import { useForm } from '@/utils/inertia';
+    import { useForm } from '@westacks/vortex/svelte';
 
     const { honeypot, form }: { honeypot: Honeypot; form: ReturnType<typeof useForm>} = $props();
 </script>

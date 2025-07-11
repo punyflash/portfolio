@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('throttle:1,1')->only('store');
+        $this->middleware('throttle:1,1')->only('store');
     }
 
     public function index()
@@ -28,12 +28,12 @@ class ContactController extends Controller
             'message' => ['required'],
         ]);
 
-        collect(config('services.contact'))
+        defer(fn () => collect(config('services.contact'))
             ->filter()
             ->reduce(
                 static fn (AnonymousNotifiable $n, $value, string $route) => $n->route($route, $value),
                 new AnonymousNotifiable,
-            )->notify(new ContactFormNotification($data));
+            )->notify(new ContactFormNotification($data)));
 
         return $request->wantsJson() ?
             response()->json(['success' => true]) :

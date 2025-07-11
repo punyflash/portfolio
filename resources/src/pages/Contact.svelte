@@ -1,6 +1,6 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { useForm, page } from "@/utils/inertia";
+    import { useForm, page } from "@westacks/vortex/svelte";
     import Honeypot, { withHoneypot } from "@/components/Honeypot.svelte";
     import { store } from "#/routes/contact";
     import User from "~icons/cil/user";
@@ -21,7 +21,7 @@
 
     function onsubmit(e: SubmitEvent) {
         e.preventDefault();
-        $form.submit(store());
+        $form.request(store());
     }
 </script>
 

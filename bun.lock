@@ -5,21 +5,21 @@
       "devDependencies": {
         "@bprogress/core": "^1.3.4",
         "@iconify-json/octicon": "^1.2.7",
-        "@iconify/json": "^2.2.356",
+        "@iconify/json": "^2.2.357",
         "@laravel/vite-plugin-wayfinder": "^0.1.3",
-        "@sveltejs/vite-plugin-svelte": "^5.1.0",
+        "@sveltejs/vite-plugin-svelte": "^6.0.0",
         "@tailwindcss/typography": "^0.5.16",
         "@tailwindcss/vite": "^4.1.11",
         "@tsconfig/svelte": "^5.0.4",
-        "@types/node": "^24.0.11",
-        "@westacks/vortex": "^0.0.20",
+        "@types/node": "^24.0.13",
+        "@westacks/vortex": "^0.0.21",
         "axios": "^1.10.0",
         "concurrently": "^9.2.0",
         "daisyui": "^5.0.46",
         "dayjs": "^1.11.13",
         "globals": "^16.3.0",
         "js-yaml": "^4.1.0",
-        "laravel-vite-plugin": "^1.3.0",
+        "laravel-vite-plugin": "^2.0.0",
         "prism-svelte": "^0.5.0",
         "rehype-katex": "^7.0.1",
         "rehype-prism": "^2.3.3",
@@ -34,7 +34,7 @@
         "tailwindcss": "^4.1.11",
         "unified": "^11.0.5",
         "unplugin-icons": "^22.1.0",
-        "vite": "^7.0.3",
+        "vite": "^7.0.4",
         "vite-plugin-svelte-svg": "^2.3.0",
       },
     },
@@ -118,7 +118,7 @@
 
     "@iconify-json/octicon": ["@iconify-json/octicon@1.2.7", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-o1WcVH2Uus6PlMOZkBOpmWywAoHDJBsHx/3cH/D/FZPB1OLNG7N9o+xI67iqlc7/5vKMeW22jI/1iSgdEYdfBw=="],
 
-    "@iconify/json": ["@iconify/json@2.2.356", "", { "dependencies": { "@iconify/types": "*", "pathe": "^1.1.2" } }, "sha512-UVUnPLu154x8oa4GFNU3SPKkKcNbVpdNBLAGDhQFPVin2kf6dK6146WK5vDZsxs+366Mfdy8ZDkbatDqjlTcPw=="],
+    "@iconify/json": ["@iconify/json@2.2.357", "", { "dependencies": { "@iconify/types": "*", "pathe": "^1.1.2" } }, "sha512-v8fr/KwcJ0qsoEJ69k1+M928bfzNmmApyJBTIAwwIzHZrVEUneHTEOJRy7OVYKisauBMVVH067I2uFNoPA92iA=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
@@ -180,9 +180,9 @@
 
     "@sveltejs/acorn-typescript": ["@sveltejs/acorn-typescript@1.0.5", "", { "peerDependencies": { "acorn": "^8.9.0" } }, "sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ=="],
 
-    "@sveltejs/vite-plugin-svelte": ["@sveltejs/vite-plugin-svelte@5.1.0", "", { "dependencies": { "@sveltejs/vite-plugin-svelte-inspector": "^4.0.1", "debug": "^4.4.1", "deepmerge": "^4.3.1", "kleur": "^4.1.5", "magic-string": "^0.30.17", "vitefu": "^1.0.6" }, "peerDependencies": { "svelte": "^5.0.0", "vite": "^6.0.0" } }, "sha512-wojIS/7GYnJDYIg1higWj2ROA6sSRWvcR1PO/bqEyFr/5UZah26c8Cz4u0NaqjPeVltzsVpt2Tm8d2io0V+4Tw=="],
+    "@sveltejs/vite-plugin-svelte": ["@sveltejs/vite-plugin-svelte@6.0.0", "", { "dependencies": { "@sveltejs/vite-plugin-svelte-inspector": "^5.0.0-next.1", "debug": "^4.4.1", "deepmerge": "^4.3.1", "kleur": "^4.1.5", "magic-string": "^0.30.17", "vitefu": "^1.1.1" }, "peerDependencies": { "svelte": "^5.0.0", "vite": "^6.3.0 || ^7.0.0" } }, "sha512-mma5GJ23pYiWpTNbN//g9XI3Hfob3aAlXPP42qRtvjgTAU6pfJyLyNPTdLjFuj+jfC9JslP4J3AkeiJNhjtLLA=="],
 
-    "@sveltejs/vite-plugin-svelte-inspector": ["@sveltejs/vite-plugin-svelte-inspector@4.0.1", "", { "dependencies": { "debug": "^4.3.7" }, "peerDependencies": { "@sveltejs/vite-plugin-svelte": "^5.0.0", "svelte": "^5.0.0", "vite": "^6.0.0" } }, "sha512-J/Nmb2Q2y7mck2hyCX4ckVHcR5tu2J+MtBEQqpDrrgELZ2uvraQcK/ioCV61AqkdXFgriksOKIceDcQmqnGhVw=="],
+    "@sveltejs/vite-plugin-svelte-inspector": ["@sveltejs/vite-plugin-svelte-inspector@5.0.0", "", { "dependencies": { "debug": "^4.4.1" }, "peerDependencies": { "@sveltejs/vite-plugin-svelte": "^6.0.0-next.0", "svelte": "^5.0.0", "vite": "^6.3.0 || ^7.0.0" } }, "sha512-iwQ8Z4ET6ZFSt/gC+tVfcsSBHwsqc6RumSaiLUkAurW3BCpJam65cmHw0oOlDMTO0u+PZi9hilBRYN+LZNHTUQ=="],
 
     "@tailwindcss/node": ["@tailwindcss/node@4.1.11", "", { "dependencies": { "@ampproject/remapping": "^2.3.0", "enhanced-resolve": "^5.18.1", "jiti": "^2.4.2", "lightningcss": "1.30.1", "magic-string": "^0.30.17", "source-map-js": "^1.2.1", "tailwindcss": "4.1.11" } }, "sha512-yzhzuGRmv5QyU9qLNg4GTlYI6STedBWRE7NjxP45CsFYYq9taI0zJXZBMqIC/c8fViNLhmrbpSFS57EoxUmD6Q=="],
 
@@ -232,7 +232,7 @@
 
     "@types/ms": ["@types/ms@2.1.0", "", {}, "sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA=="],
 
-    "@types/node": ["@types/node@24.0.11", "", { "dependencies": { "undici-types": "~7.8.0" } }, "sha512-CJV8eqrYnwQJGMrvcRhQmZfpyniDavB+7nAZYJc6w99hFYJyFN3INV1/2W3QfQrqM36WTLrijJ1fxxvGBmCSxA=="],
+    "@types/node": ["@types/node@24.0.13", "", { "dependencies": { "undici-types": "~7.8.0" } }, "sha512-Qm9OYVOFHFYg3wJoTSrz80hoec5Lia/dPp84do3X7dZvLikQvM1YpmvTBEdIr/e+U8HTkFjLHLnl78K/qjf+jQ=="],
 
     "@types/unist": ["@types/unist@3.0.3", "", {}, "sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q=="],
 
@@ -248,7 +248,7 @@
 
     "@vue/shared": ["@vue/shared@3.5.17", "", {}, "sha512-CabR+UN630VnsJO/jHWYBC1YVXyMq94KKp6iF5MQgZJs5I8cmjw6oVMO1oDbtBkENSHSSn/UadWlW/OAgdmKrg=="],
 
-    "@westacks/vortex": ["@westacks/vortex@0.0.20", "", { "dependencies": { "axios": "^1.0.0" }, "peerDependencies": { "@bprogress/core": "^1.0.0", "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0" } }, "sha512-GFaE+orRRHD7hRn36WobldJ4q8dRT8A3okB1tf65qNQzxmP1AjQrBO2ngjiksU6OXChPpFfHzyWejbIoUntYJQ=="],
+    "@westacks/vortex": ["@westacks/vortex@0.0.21", "", { "dependencies": { "axios": "^1.0.0" }, "peerDependencies": { "@bprogress/core": "^1.0.0", "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0" } }, "sha512-DgpMXYrJikWFXnW4/fMkxyYFaxSrqK33UZxpA42hOLBbiHtoMeU0J8iAfeNsSxZZIpGbfsmAqdHLgGUx8ovvzw=="],
 
     "acorn": ["acorn@8.14.1", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg=="],
 
@@ -474,7 +474,7 @@
 
     "kolorist": ["kolorist@1.8.0", "", {}, "sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ=="],
 
-    "laravel-vite-plugin": ["laravel-vite-plugin@1.3.0", "", { "dependencies": { "picocolors": "^1.0.0", "vite-plugin-full-reload": "^1.1.0" }, "peerDependencies": { "vite": "^5.0.0 || ^6.0.0" }, "bin": { "clean-orphaned-assets": "bin/clean.js" } }, "sha512-P5qyG56YbYxM8OuYmK2OkhcKe0AksNVJUjq9LUZ5tOekU9fBn9LujYyctI4t9XoLjuMvHJXXpCoPntY1oKltuA=="],
+    "laravel-vite-plugin": ["laravel-vite-plugin@2.0.0", "", { "dependencies": { "picocolors": "^1.0.0", "vite-plugin-full-reload": "^1.1.0" }, "peerDependencies": { "vite": "^7.0.0" }, "bin": { "clean-orphaned-assets": "bin/clean.js" } }, "sha512-pnaKHInJgiWpG/g+LmaISHl7D/1s5wnOXnrGiBdt4NOs+tYZRw0v/ZANELGX2/dGgHyEzO+iZ6x4idpoK04z/Q=="],
 
     "lightningcss": ["lightningcss@1.30.1", "", { "dependencies": { "detect-libc": "^2.0.3" }, "optionalDependencies": { "lightningcss-darwin-arm64": "1.30.1", "lightningcss-darwin-x64": "1.30.1", "lightningcss-freebsd-x64": "1.30.1", "lightningcss-linux-arm-gnueabihf": "1.30.1", "lightningcss-linux-arm64-gnu": "1.30.1", "lightningcss-linux-arm64-musl": "1.30.1", "lightningcss-linux-x64-gnu": "1.30.1", "lightningcss-linux-x64-musl": "1.30.1", "lightningcss-win32-arm64-msvc": "1.30.1", "lightningcss-win32-x64-msvc": "1.30.1" } }, "sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg=="],
 
@@ -768,13 +768,13 @@
 
     "vfile-message": ["vfile-message@4.0.2", "", { "dependencies": { "@types/unist": "^3.0.0", "unist-util-stringify-position": "^4.0.0" } }, "sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw=="],
 
-    "vite": ["vite@7.0.3", "", { "dependencies": { "esbuild": "^0.25.0", "fdir": "^6.4.6", "picomatch": "^4.0.2", "postcss": "^8.5.6", "rollup": "^4.40.0", "tinyglobby": "^0.2.14" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^20.19.0 || >=22.12.0", "jiti": ">=1.21.0", "less": "^4.0.0", "lightningcss": "^1.21.0", "sass": "^1.70.0", "sass-embedded": "^1.70.0", "stylus": ">=0.54.8", "sugarss": "^5.0.0", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-y2L5oJZF7bj4c0jgGYgBNSdIu+5HF+m68rn2cQXFbGoShdhV1phX9rbnxy9YXj82aS8MMsCLAAFkRxZeWdldrQ=="],
+    "vite": ["vite@7.0.4", "", { "dependencies": { "esbuild": "^0.25.0", "fdir": "^6.4.6", "picomatch": "^4.0.2", "postcss": "^8.5.6", "rollup": "^4.40.0", "tinyglobby": "^0.2.14" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^20.19.0 || >=22.12.0", "jiti": ">=1.21.0", "less": "^4.0.0", "lightningcss": "^1.21.0", "sass": "^1.70.0", "sass-embedded": "^1.70.0", "stylus": ">=0.54.8", "sugarss": "^5.0.0", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-SkaSguuS7nnmV7mfJ8l81JGBFV7Gvzp8IzgE8A8t23+AxuNX61Q5H1Tpz5efduSN7NHC8nQXD3sKQKZAu5mNEA=="],
 
     "vite-plugin-full-reload": ["vite-plugin-full-reload@1.2.0", "", { "dependencies": { "picocolors": "^1.0.0", "picomatch": "^2.3.1" } }, "sha512-kz18NW79x0IHbxRSHm0jttP4zoO9P9gXh+n6UTwlNKnviTTEpOlum6oS9SmecrTtSr+muHEn5TUuC75UovQzcA=="],
 
     "vite-plugin-svelte-svg": ["vite-plugin-svelte-svg@2.3.0", "", { "dependencies": { "svgo": "^3.0.0" }, "peerDependencies": { "svelte": ">= 3.0.0 < 5.0.0", "vite": "< 5.0.0" } }, "sha512-Bzo62u9Fj9PDldSvPrUgCzIFc9MmNbhxAUdBCofPyPyuVtoKaQxtsI01JXLk35x8/OQFHfxoTShEgPxtd4+c9Q=="],
 
-    "vitefu": ["vitefu@1.0.6", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0" }, "optionalPeers": ["vite"] }, "sha512-+Rex1GlappUyNN6UfwbVZne/9cYC4+R2XDk9xkNXBKMw6HQagdX9PgZ8V2v1WUSK1wfBLp7qbI1+XSNIlB1xmA=="],
+    "vitefu": ["vitefu@1.1.1", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0" }, "optionalPeers": ["vite"] }, "sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ=="],
 
     "web-namespaces": ["web-namespaces@2.0.1", "", {}, "sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ=="],
 
