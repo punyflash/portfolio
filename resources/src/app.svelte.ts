@@ -1,5 +1,5 @@
 import "@/css/app.css"
-import { createVortex, install, subscribe } from '@westacks/vortex'
+import { createVortex } from '@westacks/vortex'
 import inertia from '@westacks/vortex/inertia'
 import bprogress from '@westacks/vortex/bprogress'
 import { resolve } from '@/resolve'
@@ -10,15 +10,17 @@ import App from "@/App.svelte"
 
 themeChange()
 
-createVortex(async (target, page, ssr) => {
-    const h = ssr ? hydrate : mount
+createVortex(async (target, page, install, ssr) => {
+    const h: typeof mount = ssr ? hydrate : mount
 
-    install(inertia(page), bprogress())
+    install(inertia(page.get()), bprogress())
 
-    const locale = page.props.locale as { current: string, fallback: string }
+    const locale = page.get().props.locale as { current: string, fallback: string }
     prepareTranslation(locale.fallback, locale.current)
 
-    let props = $state(await resolve(page))
+    let props = $state(await resolve(page.get()))
+
     h(App, { target, props })
-    subscribe(async (page) => Object.assign(props, await resolve(page)))
+
+    page.subscribe(async (page) => Object.assign(props, await resolve(page)))
 })

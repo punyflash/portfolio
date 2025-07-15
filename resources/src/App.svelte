@@ -1,13 +1,13 @@
 <script lang="ts">
+    import { onDestroy } from "svelte";
     import { fade, fly } from "svelte/transition";
     import { _, locale } from "svelte-i18n";
-    import { link, subscribe, getPage, type Page } from "@westacks/vortex";
-    import { onDestroy } from "svelte";
+    import { link } from "@westacks/vortex";
     import { page } from "@westacks/vortex/svelte";
     import ThemeChange from "./components/ThemeChange.svelte";
     import LocaleChange from "./components/LocaleChange.svelte";
-    import ChevronDown from "~icons/cil/chevron-bottom";
     import Logo from "./components/Logo.svelte";
+    import ChevronDown from "~icons/cil/chevron-bottom";
     import { index as blog } from "#/routes/localized/blog";
     import { index as projects } from "#/routes/localized/projects";
     import { index as contact } from "#/routes/localized/contact";
@@ -18,13 +18,13 @@
         message: string;
     }
 
-    const initial = createToasts(getPage().props.flash)
+    const initial = createToasts($page.props.flash)
 
     let { component, props } = $props()
     let dropdown: HTMLDetailsElement = $state();
     let toasts: Toast[] = $state(initial);
 
-    const unsubscribe = subscribe(page => {
+    const unsubscribe = page.subscribe(page => {
         const incoming = createToasts(page.props.flash);
         toasts = [...toasts, ...incoming];
         removeToasts(incoming);

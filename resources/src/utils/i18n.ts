@@ -1,5 +1,5 @@
 import { addMessages, init, locale } from 'svelte-i18n';
-import { subscribe } from "@westacks/vortex";
+import { page } from "@westacks/vortex";
 import { get, readable, writable } from 'svelte/store';
 import en from '../../lang/en.json';
 import ru from '../../lang/ru.json';
@@ -25,7 +25,7 @@ export function prepareTranslation(fallbackLocale: string, initialLocale: string
     addMessages('ru', ru);
     addMessages('uk', uk);
 
-    const unsubscribe = subscribe(page => {
+    const unsubscribe = page.subscribe(page => {
         if (!page?.props?.locale) {
             return
         }
