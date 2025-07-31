@@ -11,7 +11,10 @@ import path from 'node:path';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/src/app.svelte.ts'],
+            input: [
+                'resources/src/app.svelte.ts',
+                'resources/css/filament/admin/theme.css',
+            ],
             ssr: ['resources/src/ssr.ts'],
             refresh: true,
         }),

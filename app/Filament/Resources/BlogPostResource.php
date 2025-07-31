@@ -2,15 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BlogPostResource\Pages;
 use App\Filament\Resources\BlogPostResource\Pages\CreateBlogPost;
+use App\Filament\Resources\BlogPostResource\Pages\EditBlogPost;
+use App\Filament\Resources\BlogPostResource\Pages\ListBlogPosts;
 use App\Models\BlogPost;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Concerns\Translatable;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 
 class BlogPostResource extends Resource
 {
@@ -18,21 +26,21 @@ class BlogPostResource extends Resource
 
     protected static ?string $model = BlogPost::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\SpatieMediaLibraryFileUpload::make('banner')
+        return $schema
+            ->components([
+                SpatieMediaLibraryFileUpload::make('banner')
                     ->collection('banner')
                     ->disk('public')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('title'),
-                Forms\Components\TextInput::make('subtitle'),
-                Forms\Components\Textarea::make('description')->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('published_at'),
-                Forms\Components\MarkdownEditor::make('content')
+                TextInput::make('title'),
+                TextInput::make('subtitle'),
+                Textarea::make('description')->columnSpanFull(),
+                DateTimePicker::make('published_at'),
+                MarkdownEditor::make('content')
                     ->columnSpanFull()
                     ->saveUploadedFileAttachmentsUsing(CreateBlogPost::createMedia(...))
                     ->getUploadedAttachmentUrlUsing(static fn ($file) => $file),
@@ -43,21 +51,21 @@ class BlogPostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('published_at'),
-                Tables\Columns\TextColumn::make('created_at'),
-                Tables\Columns\TextColumn::make('updated_at'),
+                TextColumn::make('id'),
+                TextColumn::make('title'),
+                TextColumn::make('published_at'),
+                TextColumn::make('created_at'),
+                TextColumn::make('updated_at'),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -72,9 +80,9 @@ class BlogPostResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlogPosts::route('/'),
-            'create' => Pages\CreateBlogPost::route('/create'),
-            'edit' => Pages\EditBlogPost::route('/{record}/edit'),
+            'index' => ListBlogPosts::route('/'),
+            'create' => CreateBlogPost::route('/create'),
+            'edit' => EditBlogPost::route('/{record}/edit'),
         ];
     }
 }

@@ -4,20 +4,21 @@ namespace App\Filament\Resources\BlogPostResource\Pages;
 
 use App\Filament\Resources\BlogPostResource;
 use App\Filament\Traits\HasFileContents;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+use LaraZeus\SpatieTranslatable\Resources\Pages\CreateRecord\Concerns\Translatable;
 
 class CreateBlogPost extends CreateRecord
 {
-    use CreateRecord\Concerns\Translatable,
-        HasFileContents;
+    use HasFileContents,
+        Translatable;
 
     protected static string $resource = BlogPostResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\LocaleSwitcher::make(),
+            LocaleSwitcher::make(),
         ];
     }
 }

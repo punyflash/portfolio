@@ -7,10 +7,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "filament/filament": "^3.3",
-        "filament/spatie-laravel-media-library-plugin": "^3.3",
-        "filament/spatie-laravel-translatable-plugin": "^3.3",
+        "filament/filament": "^4.0",
+        "filament/spatie-laravel-media-library-plugin": "^4.0",
         "inertiajs/inertia-laravel": "^2.0",
+        "lara-zeus/spatie-translatable": "^1.0@beta",
         "laravel-lang/routes": "^1.9",
         "laravel/envoy": "^2.10",
         "laravel/framework": "^12.0",
@@ -27,6 +27,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "filament/upgrade": "^4.0",
         "laravel-lang/common": "^6.7",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
@@ -81,6 +82,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "prefer-stable": true
 }

@@ -2,16 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\Pages\CreateProject;
+use App\Filament\Resources\ProjectResource\Pages\EditProject;
+use App\Filament\Resources\ProjectResource\Pages\ListProjects;
 use App\Models\Project;
 use App\Models\Tag;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Concerns\Translatable;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 
 class ProjectResource extends Resource
 {
@@ -19,16 +27,16 @@ class ProjectResource extends Resource
 
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('title'),
-                Forms\Components\TextInput::make('subtitle'),
-                Forms\Components\Textarea::make('description')->columnSpanFull(),
-                Forms\Components\Select::make('tags')
+        return $schema
+            ->components([
+                TextInput::make('title'),
+                TextInput::make('subtitle'),
+                Textarea::make('description')->columnSpanFull(),
+                Select::make('tags')
                     ->multiple()
                     ->relationship('tags', 'title')
                     ->getSearchResultsUsing(static fn (string $search): array => Tag::query()
@@ -41,9 +49,9 @@ class ProjectResource extends Resource
                     ->getOptionLabelsUsing(static fn ($values): array => Tag::whereIn('id', $values)->get(['id', 'title'])->pluck('title', 'id')->all())
                     ->searchable()
                     ->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('started_at'),
-                Forms\Components\DateTimePicker::make('ended_at'),
-                Forms\Components\MarkdownEditor::make('content')
+                DateTimePicker::make('started_at'),
+                DateTimePicker::make('ended_at'),
+                MarkdownEditor::make('content')
                     ->columnSpanFull()
                     ->saveUploadedFileAttachmentsUsing(CreateProject::createMedia(...))
                     ->getUploadedAttachmentUrlUsing(static fn ($file) => $file),
@@ -54,20 +62,20 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('created_at'),
-                Tables\Columns\TextColumn::make('updated_at'),
+                TextColumn::make('id'),
+                TextColumn::make('title'),
+                TextColumn::make('created_at'),
+                TextColumn::make('updated_at'),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -82,9 +90,9 @@ class ProjectResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProjects::route('/'),
-            'create' => Pages\CreateProject::route('/create'),
-            'edit' => Pages\EditProject::route('/{record}/edit'),
+            'index' => ListProjects::route('/'),
+            'create' => CreateProject::route('/create'),
+            'edit' => EditProject::route('/{record}/edit'),
         ];
     }
 }
