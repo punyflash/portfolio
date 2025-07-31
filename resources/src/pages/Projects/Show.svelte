@@ -1,9 +1,9 @@
 <script lang="ts">
     import MetaData from "@/components/MetaData.svelte";
-    import type { ProjectResourceType, FrontMatter } from "@/types";
+    import type { FrontMatter } from "@/types";
     import { safe } from '@/utils/markdown';
 
-    const { project }: { project: { data: ProjectResourceType }} = $props()
+    const { project }: { project: { data: App.Project }} = $props()
 
     const content = $derived(project?.data?.content && safe.processSync(project.data.content))
 </script>

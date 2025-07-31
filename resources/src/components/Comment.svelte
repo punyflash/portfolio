@@ -11,7 +11,7 @@
     import Reply from '~icons/cil/comment-bubble';
     import CommentForm from './CommentForm.svelte';
 
-    const { comment }: { comment: any } = $props();
+    const { comment }: { comment: App.Comment } = $props();
 
     let edit = $state(false)
     let deleteDialog: HTMLDialogElement = $state()

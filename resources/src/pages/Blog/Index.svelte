@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { link } from "@westacks/vortex";
-    import type { BlogPostResourceType, Paginated } from "@/types";
+    import { link, visible } from "@westacks/vortex/svelte";
+    import type { Paginated } from "@/types";
     import { _, locale } from "svelte-i18n";
     import { blur } from "svelte/transition";
     import { show } from "#/routes/localized/blog";
     import { dayjs } from "@/utils/i18n";
     import MetaData from "@/components/MetaData.svelte";
     import Callendar from "~icons/cil/calendar";
-    import WhenVisible from "@/components/WhenVisible.svelte";
 
-    const { posts }: { posts: Paginated<BlogPostResourceType> } = $props();
+    const { posts }: { posts: Paginated<App.BlogPost> } = $props();
 </script>
 
 <svelte:head>
@@ -58,18 +57,12 @@
         </div>
 
         {#if posts.meta.next_cursor}
-            <WhenVisible
-                always
-                params={{
-                    only: ["posts"],
-                    data: { cursor: posts.meta.next_cursor },
-                    preserveUrl: true,
-                }}
-            >
-                <svelte:fragment slot="fallback">
-                    <span class="loading loading-dots loading-xl"></span>
-                </svelte:fragment>
-            </WhenVisible>
+            <div class="group" use:visible={{
+                params: { cursor: posts.meta.next_cursor },
+                vortex: { only: ["posts"], preserveHistory: true, preserveScroll: true },
+            }}>
+                <span class="loading loading-dots loading-xl hidden group-data-[fetching]:block"></span>
+            </div>
         {/if}
     </div>
 </div>

@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { link } from '@westacks/vortex';
-    import type { ProjectResourceType, Paginated } from '@/types';
+    import { link, visible } from '@westacks/vortex/svelte';
+    import type { Paginated } from '@/types';
     import { _, locale } from 'svelte-i18n'
     import { blur } from 'svelte/transition'
     import { show } from '#/routes/localized/projects'
     import { dayjs } from "@/utils/i18n";
     import MetaData from '@/components/MetaData.svelte';
     import Callendar from "~icons/cil/calendar";
-    import WhenVisible from '@/components/WhenVisible.svelte';
 
-    const { projects }: { projects: Paginated<ProjectResourceType> } = $props()
+    const { projects }: { projects: Paginated<App.Project> } = $props()
 </script>
 
 <svelte:head>
@@ -69,15 +68,12 @@
         </div>
 
         {#if projects.meta.next_cursor}
-            <WhenVisible always params={{
-                only: ['projects'],
-                data: { cursor: projects.meta.next_cursor},
-                preserveUrl: true
+            <div class="group" use:visible={{
+                params: { cursor: projects.meta.next_cursor },
+                vortex: { only: ["projects"], preserveHistory: true, preserveScroll: true },
             }}>
-                <svelte:fragment slot="fallback">
-                    <span class="loading loading-dots loading-xl"></span>
-                </svelte:fragment>
-            </WhenVisible>
+                <span class="loading loading-dots loading-xl hidden group-data-[fetching]:block"></span>
+            </div>
         {/if}
     </div>
 </div>

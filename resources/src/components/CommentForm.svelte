@@ -2,13 +2,9 @@
     import { _ } from "svelte-i18n";
     import { useForm, page } from "@westacks/vortex/svelte";
     import Honey, { withHoneypot, type Honeypot } from './Honeypot.svelte';
+    import { store } from '#/routes/localized/blog/comments';
 
-    type Submit = {
-        url: string
-        method: 'get' | 'post' | 'put' | 'patch' | 'delete'
-    }
-
-    const { submit, data = null }: { submit: Submit, data?: { name: string, content: string }} = $props();
+    const { submit, data = null }: { submit: ReturnType<typeof store>, data?: { name: string, content: string }} = $props();
 
     let dialog: HTMLDialogElement = $state();
 

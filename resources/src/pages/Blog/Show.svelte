@@ -2,11 +2,11 @@
     import { _, locale } from "svelte-i18n";
     import Comments from "@/components/Comments.svelte";
     import MetaData from "@/components/MetaData.svelte";
-    import type { BlogPostResourceType, FrontMatter } from "@/types";
+    import type { FrontMatter } from "@/types";
     import { safe } from '@/utils/markdown';
     import { store } from '#/routes/localized/blog/comments';
 
-    const { post, comments }: { post: { data: BlogPostResourceType }, comments: { data: any[]} } = $props();
+    const { post, comments }: { post: { data: App.BlogPost }, comments: { data: App.Comment[]} } = $props();
 
     const content = $derived(post?.data?.content && safe.processSync(post.data.content))
 </script>

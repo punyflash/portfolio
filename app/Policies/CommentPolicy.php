@@ -9,7 +9,8 @@ class CommentPolicy
 {
     protected function isUsersComment(?User $user, Comment $comment): bool
     {
-        return $comment->user()->is($user) || $comment->session_id === request()->session()->getId();
+        return $comment->user()->is($user) ||
+            rescue(fn () => $comment->session_id === request()->session()->getId(), false, false);
     }
 
     /**

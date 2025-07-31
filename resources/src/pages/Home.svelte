@@ -2,9 +2,8 @@
     import { _ } from 'svelte-i18n'
     import Carousel from '@/components/Carousel.svelte';
     import MetaData from '@/components/MetaData.svelte';
-    import type { TagResourceType } from '@/types';
 
-    const { tags }: { tags: { data: TagResourceType[] } } = $props()
+    const { tags }: { tags: { data: App.Tag[] } } = $props()
 
     let carousel: Carousel = $state()
 

@@ -15,6 +15,9 @@ createVortex(async (target, page, install, ssr) => {
 
     install(inertia(page.get()), bprogress())
 
+    delete target.dataset.page
+    delete target.dataset.ssr
+
     const locale = page.get().props.locale as { current: string, fallback: string }
     prepareTranslation(locale.fallback, locale.current)
 

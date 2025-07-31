@@ -2,10 +2,11 @@
     import { _ } from "svelte-i18n";
     import CommentForm from "./CommentForm.svelte";
     import Comment from "./Comment.svelte";
+    import { store } from '#/routes/localized/blog/comments';
 
     let modal: CommentForm = $state();
 
-    const { post, comments, ...rest }: { post: any, comments: any[], [key: string]: any } = $props();
+    const { post, comments, ...rest }: { post: ReturnType<typeof store>, comments: App.Comment[], [key: string]: any } = $props();
 </script>
 
 {#snippet tree(comment, level = 0)}
