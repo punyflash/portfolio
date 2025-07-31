@@ -20,6 +20,7 @@
 
     git reset
     git clean -df
+    git fetch
     git pull
 
     composer install -n -o --no-dev --prefer-dist --no-progress
@@ -28,4 +29,9 @@
     php artisan storage:link --force
 
     php artisan up
+@endtask
+
+@task('upload-assets', ['on' => 'local'])
+    scp -r bootstrap/ssr/* {{ $production }}:{{ $dir }}/bootstrap/ssr
+    scp -r public/build/* {{ $production }}:{{ $dir }}/public/build
 @endtask
